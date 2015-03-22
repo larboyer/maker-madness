@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	div.container
+		h4 Maker Signup
+		br
+		form(role="form")
+			div.form-group
+				label(for="name") Name
+				input#fname.form-control.short-input(placeholder="First")
+				input#lname.form-control.short-input(placeholder="Last")
+			div.form-group
+				label(for="email") Email
+				input#email.form-control(type="email", placeholder="Enter email")
+				
+

@@ -1,0 +1,23 @@
+body {
+	padding: 10px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	//font: arial;
+}
+input.short-input {
+	width: 150px;
+}
+
+#main-menu {
+}
+
+.btn-primary {
+	margin: 5px;
+}
+
+a {
+	color: #00B7FF;
+}
+h2 {
+	font-family: arial;
+	color: red;
+}

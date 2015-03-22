@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	div.container
+		h4 Volunteer Signup
+
+		form.form-horizontal(role="form")
+			div.form-group
+				label.control-label.col-sm-2 Email
+					div.col-sm-10
+						input#email.form-control(type="email" placeholder="Enter email")
+			div.form-group
+				label.control-label.col-sm-2 Password
+					div.col-sm-10
+						input#pwd.form-control(type="password" placeholder="Enter password")
+			div.form-group
+				div.col-sm-offset-2.col-sm-10
+					div.checkbox
+			div.form-group
+				div.col-sm-offset-2.col-sm-10
+					button.btn.btn-default(type="submit")
