@@ -32,6 +32,12 @@ router.get('/maker_signup', function(req, res, next) {
 	});
 });
 
+router.post('/maker_signup', function(req, res, next) {
+	res.render('maker_signup', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+
 router.get('/volunteer_signup', function(req, res, next) {
 	res.render('volunteer_signup', { 
 		title: 'Achieve Maker Madness' 
