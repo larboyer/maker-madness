@@ -9,10 +9,17 @@ input.short-input {
 
 #main-menu {
 }
-.right-col5 {
-	border: 1px solid red;
-	text-align: left;
+
+.right-col-text {
+	//text-align: left;
+	font-weight: 400; 
+	padding-top: 7px;
+	margin-bottom: 0;
 }
+
+.control-label {
+}
+
 .btn-primary {
 	margin: 5px;
 }
