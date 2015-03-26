@@ -9,7 +9,10 @@ input.short-input {
 
 #main-menu {
 }
-
+.right-col5 {
+	border: 1px solid red;
+	text-align: left;
+}
 .btn-primary {
 	margin: 5px;
 }
