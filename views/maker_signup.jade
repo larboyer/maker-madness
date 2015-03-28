@@ -28,12 +28,51 @@ block content
 			});
 		});
 
+		function dothis() {
+			console.log("dothis");
+		}
+
+		// Post maker form data to back-end 
+		function submitMakerSignup() {
+			console.log("Diag 2000");
+			var data = {}
+			// Boyer here
+			data.name = $('#name');
+			data.email = $('#email');
+			data.is_teacher = $('#is-teacher');
+
+			$.post("/maker_signup",data, function() {
+				console.log("Maker form submitted");
+			}).fail( function() {
+				console.log("Err 8282; problem");
+			});
+			return true;
+		}
+
+
+		/*
+		function addRole( roleName ) {
+
+			var collection = db.get('roles');
+			collection.insert({
+				"role": roleName
+			}, function(err, doc) {
+				if( err ) {
+					console.log("Err  2837; problem with insert:" + err);
+				} else {
+					console.log("Diag 1000; successfully inserted:" + doc);
+				}
+			}); 
+		}
+		*/
+
+
 
 	div.container
 		h4 Maker Signup
 		br
 		html.
-			<form class="form-horizontal" role="form">
+			<form id="maker-info-form" action="">
 
 				<h5>Tell us about yourself</h5>
 				<div class="form-group">
@@ -171,7 +210,11 @@ block content
 
 				<div class="form-group"> 
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default">Submit</button>
+						<!--
+						<button onclick="submitMakerSignup();" class="btn btn-default">Submit</button>
+						-->
+						<button type="button" onclick="dothis();">Hey</button>
+						<button type="button" onclick="submitMakerSignup();">Submit</button>
 					</div>
 				</div>
 			</form>

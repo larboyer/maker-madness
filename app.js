@@ -9,9 +9,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/maker-madness');
+var db = monk('localhost:27017/makermadness');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -67,6 +66,21 @@ app.use(function(err, req, res, next) {
 		error: {}
 	});
 });
+
+
+function addPotentialMaker( maker_form_data ) {
+
+	var collection = db.get('potential_makers');
+	collection.insert({
+		"potential_maker": roleName
+	}, function(err, doc) {
+		if( err ) {
+			console.log("Diag 1000; successfully inserted:" + doc);
+		}
+	}); 
+}
+
+
 
 
 module.exports = app;
