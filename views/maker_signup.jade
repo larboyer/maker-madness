@@ -26,6 +26,9 @@ block content
 					$('#business-owner-div').slideUp();
 				}
 			});
+			$('#submit-maker-signup-btn').click( function() {
+				submitMakerSignup();
+			});
 		});
 
 		function dothis() {
@@ -35,17 +38,25 @@ block content
 		// Post maker form data to back-end 
 		function submitMakerSignup() {
 			console.log("Diag 2000");
-			var data = {}
-			// Boyer here
-			data.name = $('#name');
-			data.email = $('#email');
-			data.is_teacher = $('#is-teacher');
+			var maker_data = {}
 
+			// Boyer here
+			maker_data.name = $('#name').val();
+			maker_data.email = $('#email').val();
+			maker_data.is_teacher = $('#is-teacher').val();
+
+			console.log("Going to send this obj:");
+			console.log(maker_data);
+
+			var data_str = JSON.stringify(maker_data);
+
+			/*
 			$.post("/maker_signup",data, function() {
 				console.log("Maker form submitted");
 			}).fail( function() {
 				console.log("Err 8282; problem");
 			});
+			*/
 			return true;
 		}
 
@@ -76,13 +87,13 @@ block content
 
 				<h5>Tell us about yourself</h5>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Name</label>
+					<label class="control-label col-sm-2">Name</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="name" placeholder="Enter name">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Email</label>
+					<label class="control-label col-sm-2">Email</label>
 					<div class="col-sm-10">
 						<input type="email" class="form-control" id="email" placeholder="Enter email">
 					</div>
@@ -96,7 +107,7 @@ block content
 				</div>
 				<div id="teacher-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">Grade</label>
+						<label class="control-label col-sm-2">Grade</label>
 						<div class="col-sm-10">
 							<select id="grade">
 								<option value="na"></option>
@@ -117,7 +128,7 @@ block content
 						</div>
 					</div>
 					<div class="form-group"> 
-						<label class="control-label col-sm-2" for="subject">Subject</label>
+						<label class="control-label col-sm-2">Subject</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="subject">
 						</div>
@@ -133,13 +144,13 @@ block content
 				</div>
 				<div id="parent-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">School(s)</label>
+						<label class="control-label col-sm-2">School(s)</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="school" placeholder="Enter school">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">Kid's ages)</label>
+						<label class="control-label col-sm-2">Kid's ages)</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="school" placeholder="Enter kid's ages">
 						</div>
@@ -155,13 +166,13 @@ block content
 				</div>
 				<div id="business-owner-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="business-name">Business Name</label>
+						<label class="control-label col-sm-2">Business Name</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="business" placeholder="Enter Business Name">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="business-desc">Business Description</label>
+						<label class="control-label col-sm-2">Business Description</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="school" placeholder="Enter Business Description">
 						</div>
@@ -192,7 +203,7 @@ block content
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Project Description</label>
-					<label class="right-col-text col-sm-10" for="business-desc">
+					<label class="right-col-text col-sm-10">
 						Describe the project you’d like to lead or let us know your general area of interest. We 
 						have lots of ideas or can help you to refine yours if you like. We also have 
 						planned stations that need extra pairs of hands. Let us know how you want to help and we 
@@ -213,8 +224,10 @@ block content
 						<!--
 						<button onclick="submitMakerSignup();" class="btn btn-default">Submit</button>
 						-->
+						<button type="button" id="submit-maker-signup-btn">Submit</button>
+						<!--
 						<button type="button" onclick="dothis();">Hey</button>
-						<button type="button" onclick="submitMakerSignup();">Submit</button>
+						-->
 					</div>
 				</div>
 			</form>
