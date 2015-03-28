@@ -29,11 +29,10 @@ block content
 			$('#submit-maker-signup-btn').click( function() {
 				submitMakerSignup();
 			});
+			$('#preload-form-btn').click( function() {
+				loadForm();
+			});
 		});
-
-		function dothis() {
-			console.log("dothis");
-		}
 
 		// Post maker form data to back-end 
 		function submitMakerSignup() {
@@ -60,13 +59,33 @@ block content
 			return true;
 		}
 
+		function loadForm() {
+
+			$("#name").val("Larry Boyer");
+			$("#email").val("larry.boyer@gmail.com");
+			$("#is-teacher").val(1);
+			$("#grade").val("4th");
+			$("#subject").val("Science");
+			$("#is-parent").val(1);
+			$("#school").val("South Orange Middle");
+			$("#kids-age").val("11,13");
+			$("#is-business-owner").val(1);
+			$("#business-name").val("Larry Boyer Consulting");
+			$("#school").val("Larry Boyer");
+			$("#is-community-member").val("Larry Boyer");
+			$("#how-to-participate").val("Larry Boyer");
+			$("#desired-project-description").val("Larry Boyer");
+
+
+		}
+
 
 		/*
-		function addRole( roleName ) {
+		function addMakerInfo( maker_info_obj ) {
 
 			var collection = db.get('roles');
 			collection.insert({
-				"role": roleName
+				"role": maker_info_obj
 			}, function(err, doc) {
 				if( err ) {
 					console.log("Err  2837; problem with insert:" + err);
@@ -152,7 +171,7 @@ block content
 					<div class="form-group">
 						<label class="control-label col-sm-2">Kid's ages)</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="school" placeholder="Enter kid's ages">
+							<input type="text" class="form-control" id="kids-age" placeholder="Enter kid's ages">
 						</div>
 					</div>
 				</div>
@@ -168,7 +187,7 @@ block content
 					<div class="form-group">
 						<label class="control-label col-sm-2">Business Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="business" placeholder="Enter Business Name">
+							<input type="text" class="form-control" id="business-name" placeholder="Enter Business Name">
 						</div>
 					</div>
 					<div class="form-group">
@@ -192,7 +211,7 @@ block content
 				<div class="form-group">
 					<label class="control-label col-sm-2"></label>
 					<div class="col-sm-10">
-						<select id="participate">
+						<select id="how-to-participate">
 							<option value="na">(please select one)</option>
 							<option value="mentor">I would like to be a maker mentor (run a station)</option>
 							<option value="sponsor">I would like to sponsor a station ($300 or equivalent in supplies)</option>
@@ -221,13 +240,9 @@ block content
 
 				<div class="form-group"> 
 					<div class="col-sm-offset-2 col-sm-10">
-						<!--
-						<button onclick="submitMakerSignup();" class="btn btn-default">Submit</button>
-						-->
-						<button type="button" id="submit-maker-signup-btn">Submit</button>
-						<!--
-						<button type="button" onclick="dothis();">Hey</button>
-						-->
+						<!-- Boyer temp -->
+						<button class="btn btn-primary" type="button" id="preload-form-btn">Proload</button>
+						<button class="btn btn-primary" type="button" id="submit-maker-signup-btn">Submit</button>
 					</div>
 				</div>
 			</form>
