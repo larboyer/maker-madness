@@ -7,12 +7,42 @@ input.short-input {
 	width: 150px;
 }
 .form-group {
-	border: 1px solid blue;
+	//border: 1px solid blue;
+//	margin-bottom: 25px;	
 }
-hr {
+#maker-info-form .form-group {
+	margin-bottom: 35px;	
+
+}
+
+
+hr.real-hr {
+	background-color: #eee;
+	height: 3px;
+	width: 100%;
+}
+
+.form-group hr {
 	clear: both;
-	visibility: hidden;
+	float: left;
+//	visibility: hidden;
+//	display: none;
+//	border 0;
+//	margin 0;
+//	border: 1px solid blue;
 }
+
+.form-group label {
+//	border: 1px solid red;
+}
+.form-group .col-sm-10 {
+//	border: 1px solid yellow;
+}
+.form-group input {
+//	border: 1px solid green;
+}	
+
+
 
 #main-menu {
 }

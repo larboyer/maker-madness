@@ -1,4 +1,4 @@
+vi routes/index.js views/maker_signup.jade public/css/mm_style.css
 #vi app.js bin/www routes/index.js views/intro.jade views/layout.jade views/home.jade views/makers_wanted.jade views/volunteers_wanted.jade views/maker_signup.jade public/css/mm_style.css
 #vi load_db.js app.js bin/www routes/index.js views/maker_signup.jade public/css/mm_style.css
-vi load_db.js routes/index.js views/maker_signup.jade temp.jade public/css/mm_style.css
 

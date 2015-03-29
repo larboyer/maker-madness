@@ -26,6 +26,13 @@ block content
 					$('#business-owner-div').slideUp();
 				}
 			});
+			$('#is-community-member').change( function() {
+				if( this.checked ) {
+					$('#business-owner-div').slideDown();
+				} else {
+					$('#business-owner-div').slideUp();
+				}
+			});
 			$('#submit-maker-signup-btn').click( function() {
 				submitMakerSignup();
 			});
@@ -36,26 +43,52 @@ block content
 
 		// Post maker form data to back-end 
 		function submitMakerSignup() {
+			if( $('#email').val() != $('#confirm-email').val() ) {
+				alert("Email confirmation doesn't match email. Please enter your " + 
+					"email address twice to insure that we have it right.");
+				return false;
+			}
+
 			console.log("Diag 2000");
 			var maker_data = {}
 
 			// Boyer here
-			maker_data.name = $('#name').val();
-			maker_data.email = $('#email').val();
-			maker_data.is_teacher = $('#is-teacher').val();
+
+			maker_data.name = $("#name").val();
+			maker_data.email = $("#email").val();
+			maker_data.is_teacher = $("#is-teacher").is(':checked');
+					
+
+	
+			//maker_data.grade = $("#grade").val();
+			maker_data.subject = $("#subject").val();
+			maker_data.is_parent = $("#is-parent").is(':checked');
+			maker_data.school = $("#school").val();
+			maker_data.kids_age = $("#kids-age").val();
+			maker_data.is_business_owner = $("#is-business-owner").is(':checked');
+			maker_data.business_name = $("#business-name").val();
+			maker_data.business_desc = $("#business-desc").val();
+			maker_data.is_community_member = $("#is-community-member").is(':checked');
+			maker_data.how_to_participate = $("#how-to-participate").val();
+			maker_data.desired_project_desc = $("#desired-project-desc").val();
+
+
 
 			console.log("Going to send this obj:");
 			console.log(maker_data);
 
 			var data_str = JSON.stringify(maker_data);
 
-			/*
-			$.post("/maker_signup",data, function() {
-				console.log("Maker form submitted");
+			//contentType: 'application/json',
+	
+			$.post( "/maker_signup", maker_data, function(data) {
+				console.log("Diag 2000; success: data:");
+				console.log(data);
 			}).fail( function() {
-				console.log("Err 8282; problem");
+				console.log("Failed");
 			});
-			*/
+
+
 			return true;
 		}
 
@@ -63,6 +96,7 @@ block content
 
 			$("#name").val("Larry Boyer");
 			$("#email").val("larry.boyer@gmail.com");
+			$("#confirm-email").val("larry.boyer@gmail.com");
 			$("#is-teacher").prop('checked',true);
 			$("#grade").val("4");
 			$("#subject").val("Science");
@@ -71,12 +105,10 @@ block content
 			$("#kids-age").val("11,13");
 			$("#is-business-owner").prop('checked',true);
 			$("#business-name").val("Larry Boyer Consulting");
-			$("#business-desc").val("Larry Boyer");
+			$("#business-desc").val("Developing web sites for maker events");
 			$("#is-community-member").prop('checked',true);
-			$("#how-to-participate").val("Larry Boyer");
-			$("#desired-project-description").val("Larry Boyer");
-
-
+			$("#how-to-participate").val("mentor");
+			$("#desired-project-desc").val("My project will develper cars that drive around");
 		}
 
 
@@ -97,40 +129,47 @@ block content
 		*/
 
 
-
 	div.container
 		h4 Maker Signup
 		br
 		html.
 			<form id="maker-info-form" action="">
 
-				<h5>Tell us about yourself</h5>
+				<h4>Tell us about yourself</h4>
+
 				<div class="form-group">
-					<label class="control-label col-sm-2">Name</label>
-					<div class="col-sm-10">
+					<label class="control-label col-sm-3">Name</label>
+					<div class="col-sm-9">
 						<input type="text" class="form-control" id="name" placeholder="Enter name">
 					</div>
 					<hr />
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Email</label>
-					<div class="col-sm-10">
+					<label class="control-label col-sm-3">Email</label>
+					<div class="col-sm-9">
 						<input type="email" class="form-control" id="email" placeholder="Enter email">
 					</div>
 					<hr />
 				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3">Confirm Email</label>
+					<div class="col-sm-9">
+						<input type="email" class="form-control" id="confirm-email" placeholder="Enter email">
+					</div>
+					<hr />
+				</div>
 				<div class="form-group"> 
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
-							<label><input id="is-teacher" type="checkbox">I am a teacher in the SOMA school district</label>
+							<label><input id="is-teacher" type="checkbox">I am a teacher in the SOMA school district</input></label>
 						</div>
 					</div>
 					<hr />
 				</div>
 				<div id="teacher-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Grade</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">Grade</label>
+						<div class="col-sm-9">
 							<select id="grade">
 								<option value="na"></option>
 								<option value="k">kindergarten</option>
@@ -151,16 +190,16 @@ block content
 						<hr />
 					</div>
 					<div class="form-group"> 
-						<label class="control-label col-sm-2">Subject</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">Subject</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" id="subject">
 						</div>
 						<hr />
 					</div>
 				</div>
-
+				<hr class="real-hr" />
 				<div class="form-group"> 
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
 							<label><input id="is-parent" type="checkbox">I am a parent in the SOMA school district</label>
 						</div>
@@ -169,56 +208,66 @@ block content
 				</div>
 				<div id="parent-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2">School(s)</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">School(s)</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" id="school" placeholder="Enter school">
 						</div>
 						<hr />
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2">Kid's ages)</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">Kid's ages)</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" id="kids-age" placeholder="Enter kid's ages">
 						</div>
 						<hr />
 					</div>
 				</div>
+				<hr class="real-hr" />
 
 				<div class="form-group"> 
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
 							<label><input id="is-business-owner" type="checkbox">I am an owner/manager of a local business</label>
 						</div>
 					</div>
+					<hr />
 				</div>
 				<div id="business-owner-div" style="display:none">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Business Name</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">Business Name</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" id="business-name" placeholder="Enter Business Name">
 						</div>
+						<hr />
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2">Business Description</label>
-						<div class="col-sm-10">
+						<label class="control-label col-sm-3">Business Description</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" id="business-desc" placeholder="Enter Business Description">
 						</div>
+						<hr />
 					</div>
 				</div>
+				<hr class="real-hr" />
+
+				<!--
 				<div class="form-group"> 
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
 							<label><input id="is-community-member" type="checkbox">I am an interested community member</label>
 						</div>
 					</div>
+					<hr />
+				</div>
+				-->
+				<div class="form-group">
+					<label class="control-label col-sm-3">Participation</label>
+					<label class="right-col-text col-sm-9">How would you like to participate in Maker Madness?</label>
+					<hr />
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Participation</label>
-					<label class="right-col-text col-sm-10">How would you like to participate in Maker Madness?</label>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2"></label>
-					<div class="col-sm-10">
+					<label class="control-label col-sm-3"></label>
+					<div class="col-sm-9">
 						<select id="how-to-participate">
 							<option value="na">(please select one)</option>
 							<option value="mentor">I would like to be a maker mentor (run a station)</option>
@@ -227,30 +276,34 @@ block content
 							<option value="volunteer-other">I want to volunteer at the event in another way (set-up, concessions, concierge, etc)</option>
 						</select>
 					</div>
+					<hr />
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Project Description</label>
-					<label class="right-col-text col-sm-10">
+					<label class="control-label col-sm-3">Project Description</label>
+					<label class="right-col-text col-sm-9">
 						Describe the project you’d like to lead or let us know your general area of interest. We 
 						have lots of ideas or can help you to refine yours if you like. We also have 
 						planned stations that need extra pairs of hands. Let us know how you want to help and we 
 						will find a way to use your skills.
 					</label>
+					<hr />
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2"></label>
-					<div class="col-sm-10">
-						<textarea rows="5" cols="50" class="form-control" id="desired-project-description" placeholder="Enter Desired Project Description"></textarea>
+					<label class="control-label col-sm-3"></label>
+					<div class="col-sm-9">
+						<textarea rows="5" cols="50" class="form-control" id="desired-project-desc" placeholder="Enter Desired Project Description"></textarea>
 
 					</div>
+					<hr />
 				</div>
 
 				<div class="form-group"> 
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-9">
 						<!-- Boyer temp -->
 						<button class="btn btn-primary" type="button" id="preload-form-btn">Proload</button>
 						<button class="btn btn-primary" type="button" id="submit-maker-signup-btn">Submit</button>
 					</div>
+					<hr />
 				</div>
 			</form>
 

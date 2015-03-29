@@ -35,6 +35,18 @@ router.get('/maker_signup', function(req, res, next) {
 	});
 });
 
+router.post('/maker_signup', function(req, res, next) {
+	console.log("Diag 6000; got post");
+	console.log(req.body);
+	var ret_obj = {};
+	ret_obj.result = 'success';
+	ret_obj.data = req.body;
+	ret_obj_str = JSON.stringify(ret_obj);	
+	res.send(ret_obj_str);
+
+
+});
+
 router.post('/test01', function(req, res, next) {
 	res.render('maker_signup', { 
 		title: 'Achieve Maker Madness' 
