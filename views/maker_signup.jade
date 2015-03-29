@@ -63,16 +63,16 @@ block content
 
 			$("#name").val("Larry Boyer");
 			$("#email").val("larry.boyer@gmail.com");
-			$("#is-teacher").val(1);
-			$("#grade").val("4th");
+			$("#is-teacher").prop('checked',true);
+			$("#grade").val("4");
 			$("#subject").val("Science");
-			$("#is-parent").val(1);
+			$("#is-parent").prop('checked',true);
 			$("#school").val("South Orange Middle");
 			$("#kids-age").val("11,13");
-			$("#is-business-owner").val(1);
+			$("#is-business-owner").prop('checked',true);
 			$("#business-name").val("Larry Boyer Consulting");
-			$("#school").val("Larry Boyer");
-			$("#is-community-member").val("Larry Boyer");
+			$("#business-desc").val("Larry Boyer");
+			$("#is-community-member").prop('checked',true);
 			$("#how-to-participate").val("Larry Boyer");
 			$("#desired-project-description").val("Larry Boyer");
 
@@ -110,12 +110,14 @@ block content
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="name" placeholder="Enter name">
 					</div>
+					<hr />
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Email</label>
 					<div class="col-sm-10">
 						<input type="email" class="form-control" id="email" placeholder="Enter email">
 					</div>
+					<hr />
 				</div>
 				<div class="form-group"> 
 					<div class="col-sm-offset-2 col-sm-10">
@@ -123,6 +125,7 @@ block content
 							<label><input id="is-teacher" type="checkbox">I am a teacher in the SOMA school district</label>
 						</div>
 					</div>
+					<hr />
 				</div>
 				<div id="teacher-div" style="display:none">
 					<div class="form-group">
@@ -145,12 +148,14 @@ block content
 								<option value="12">twelfth grade</option>
 							</select>
 						</div>
+						<hr />
 					</div>
 					<div class="form-group"> 
 						<label class="control-label col-sm-2">Subject</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="subject">
 						</div>
+						<hr />
 					</div>
 				</div>
 
@@ -160,6 +165,7 @@ block content
 							<label><input id="is-parent" type="checkbox">I am a parent in the SOMA school district</label>
 						</div>
 					</div>
+					<hr />
 				</div>
 				<div id="parent-div" style="display:none">
 					<div class="form-group">
@@ -167,12 +173,14 @@ block content
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="school" placeholder="Enter school">
 						</div>
+						<hr />
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2">Kid's ages)</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="kids-age" placeholder="Enter kid's ages">
 						</div>
+						<hr />
 					</div>
 				</div>
 
@@ -193,7 +201,7 @@ block content
 					<div class="form-group">
 						<label class="control-label col-sm-2">Business Description</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="school" placeholder="Enter Business Description">
+							<input type="text" class="form-control" id="business-desc" placeholder="Enter Business Description">
 						</div>
 					</div>
 				</div>
@@ -236,7 +244,6 @@ block content
 
 					</div>
 				</div>
-
 
 				<div class="form-group"> 
 					<div class="col-sm-offset-2 col-sm-10">

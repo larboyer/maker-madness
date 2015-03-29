@@ -6,6 +6,13 @@ body {
 input.short-input {
 	width: 150px;
 }
+.form-group {
+	border: 1px solid blue;
+}
+hr {
+	clear: both;
+	visibility: hidden;
+}
 
 #main-menu {
 }
