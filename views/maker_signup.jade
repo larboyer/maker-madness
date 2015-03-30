@@ -69,7 +69,7 @@ block content
 			maker_data.business_name = $("#business-name").val();
 			maker_data.business_desc = $("#business-desc").val();
 			maker_data.is_community_member = $("#is-community-member").is(':checked');
-			maker_data.how_to_participate = $("#how-to-participate").val();
+			maker_data.role = $("#role").val();
 			maker_data.desired_project_desc = $("#desired-project-desc").val();
 
 
@@ -107,7 +107,7 @@ block content
 			$("#business-name").val("Larry Boyer Consulting");
 			$("#business-desc").val("Developing web sites for maker events");
 			$("#is-community-member").prop('checked',true);
-			$("#how-to-participate").val("mentor");
+			$("#role").val("mentor");
 			$("#desired-project-desc").val("My project will develper cars that drive around");
 		}
 
@@ -197,7 +197,6 @@ block content
 						<hr />
 					</div>
 				</div>
-				<hr class="real-hr" />
 				<div class="form-group"> 
 					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
@@ -222,7 +221,6 @@ block content
 						<hr />
 					</div>
 				</div>
-				<hr class="real-hr" />
 
 				<div class="form-group"> 
 					<div class="col-sm-offset-3 col-sm-9">
@@ -248,7 +246,6 @@ block content
 						<hr />
 					</div>
 				</div>
-				<hr class="real-hr" />
 
 				<!--
 				<div class="form-group"> 
@@ -268,7 +265,7 @@ block content
 				<div class="form-group">
 					<label class="control-label col-sm-3"></label>
 					<div class="col-sm-9">
-						<select id="how-to-participate">
+						<select id="role">
 							<option value="na">(please select one)</option>
 							<option value="mentor">I would like to be a maker mentor (run a station)</option>
 							<option value="sponsor">I would like to sponsor a station ($300 or equivalent in supplies)</option>
@@ -300,7 +297,7 @@ block content
 				<div class="form-group"> 
 					<div class="col-sm-offset-3 col-sm-9">
 						<!-- Boyer temp -->
-						<button class="btn btn-primary" type="button" id="preload-form-btn">Proload</button>
+						<button class="btn btn-primary" type="button" id="preload-form-btn">Preload</button>
 						<button class="btn btn-primary" type="button" id="submit-maker-signup-btn">Submit</button>
 					</div>
 					<hr />

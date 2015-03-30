@@ -3,6 +3,7 @@ var router = express.Router();
 
 //var monk = require('monk');
 //var db = monk('localhost:27017/makermadness');
+var MakerDbAdapter = require('../makerDbAdapter.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -42,8 +43,11 @@ router.post('/maker_signup', function(req, res, next) {
 	ret_obj.result = 'success';
 	ret_obj.data = req.body;
 	ret_obj_str = JSON.stringify(ret_obj);	
-	res.send(ret_obj_str);
 
+	var maker_db = new MakerDbAdapter( req.db );
+	maker_db.insertMakerSignupRec( rec );
+	
+	res.send(ret_obj_str);
 
 });
 
