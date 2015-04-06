@@ -12,6 +12,18 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+router.get('/intro2', function(req, res, next) {
+	res.render('intro2', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+router.get('/index4', function(req, res, next) {
+	res.render('index4', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+
+
 router.get('/home', function(req, res, next) {
 	res.render('home', { 
 		title: 'Achieve Maker Madness' 

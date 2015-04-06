@@ -16,6 +16,25 @@ input.short-input {
 }
 
 
+.mm_red {
+	color: rgb(227,6,17);
+}
+.mm_blue {
+	color: rgb(35,156,182);
+}
+.mm_purple {
+	color: rgb(194,64,254);
+}
+.mm_yellow {
+	color: rgb(255,151,0);
+}
+.mm_green {
+	color: rgb(77,170,41);
+}
+
+
+
+
 hr.real-hr {
 	background-color: #eee;
 	height: 3px;
