@@ -83,6 +83,4 @@ function addPotentialMaker( maker_form_data ) {
 }
 
 
-
-
 module.exports = app;
