@@ -70,24 +70,17 @@ p {
 	font-size: 20px;
 	font-weight: 200;
 	padding-left: 520px;
-	line-height: 50%
+	line-height: 100%
+	padding: 0;
+	margin: 0;
 }
 
 
 .rotate {
-	/* Safari */
 	-webkit-transform: rotate(-90deg);
-
-	/* Firefox */
 	-moz-transform: rotate(-90deg);
-
-	/* IE */
 	-ms-transform: rotate(-90deg);
-
-	/* Opera */
 	-o-transform: rotate(-90deg);
-
-	/* Internet Explorer */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 .rotate-10 {
