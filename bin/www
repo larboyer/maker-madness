@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+//----------------------------------------------------------
+// AchieveMakerMadness
+// lboyer; 3/2015
+//----------------------------------------------------------
 
 var app = require('../app');
 var debug = require('debug')('maker-madness:server');

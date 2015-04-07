@@ -1,7 +1,7 @@
-//------------------------------------------------------------------------------
+//----------------------------------------------------------
 // AchieveMakerMadness
 // lboyer; 3/2015
-//------------------------------------------------------------------------------
+//----------------------------------------------------------
 
 var express = require('express');
 var path = require('path');
@@ -9,9 +9,46 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/makermadness');
+
+//var mongo = require('mongodb');
+//var monk = require('monk');
+//var db = monk('localhost:27017/makermadness');
+
+var Db = require('mongodb').Db;
+var MongoClient = require('mongodb').MongoClient;
+var Server = require('mongodb').Server;
+
+var MONGO_HOST = "localhost";
+var MONGO_PORT = 27017;
+var MONGO_DB = "makermadness";
+var CONN_STR = "mongodb://" + MONGO_HOST + ":" + MONGO_PORT + "/" + MONGO_DB;
+
+console.log("Init db conn");
+
+// Lazy-load the db_conn
+var dbConn = undefined;
+
+function getDbConn() {
+	if( dbConn ) {
+		return dbConn;
+	} else {
+		MongoClient.connect( CONN_STR, function(err, db) {
+			if(err) {
+				console.log("Err  8799; Cannot connect to db.");
+				console.log("Conn str:" + CONN_STR);
+			} else {
+				// Set global connection var.
+				dbConn = db;
+				console.log("Diag 1001; Got DB Connection");
+			}
+		});
+	}
+}
+
+// Ok, not that lazy. Get it at start so we are ready.
+console.log("Diag 1000; getting DB Connection...");
+getDbConn();
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -31,7 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req,res,next){
 	// Send the database client along with the request obj.
 	console.log("Diag 2000; loading db creds");
-	req.db = db;
+	req.db = dbConn;
 	next();
 });
 

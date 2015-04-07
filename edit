@@ -1,4 +1,4 @@
-vi routes/index.js views/home.jade public/css/mm_style.css public/assets/css/parallax.css views/intro.jade views/layout.jade views/home.jade views/makers.jade views/sponsors.jade views/volunteers_wanted.jade public/assets/css/parallax.css
+vi app.js bin/www routes/index.js views/maker_signup.jade views/home.jade public/css/mm_style.css public/assets/css/parallax.css views/intro.jade views/layout.jade views/home.jade views/makers.jade views/sponsors.jade views/volunteers_wanted.jade public/assets/css/parallax.css
 #vi routes/index.js views/intro.jade views/layout.jade views/home.jade views/makers.jade views/sponsors.jade views/volunteers_wanted.jade public/assets/css/parallax.css
 #vi app.js bin/www routes/index.js views/intro.jade views/layout.jade views/home.jade views/makers_wanted.jade views/volunteers_wanted.jade views/maker_signup.jade public/css/mm_style.css
 #vi load_db.js app.js bin/www routes/index.js views/maker_signup.jade public/css/mm_style.css
