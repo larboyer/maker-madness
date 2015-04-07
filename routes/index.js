@@ -35,7 +35,18 @@ router.get('/home', function(req, res, next) {
 	});
 });
 
-router.get('/makers_wanted', function(req, res, next) {
+router.get('/makers', function(req, res, next) {
+	res.render('makers', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+
+router.get('/sponsors', function(req, res, next) {
+	res.render('sponsors', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+router.get('/sponsors', function(req, res, next) {
 	res.render('makers_wanted', { 
 		title: 'Achieve Maker Madness' 
 	});
