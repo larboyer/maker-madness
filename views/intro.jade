@@ -1,22 +1,61 @@
-doctype html
+doctype html 
 html
 	head
+		meta(charset='utf-8')
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 		title Achieve Maker Madness
 		link(rel='stylesheet', href='/css/mm_style.css')
 		script(src='bower_components/jquery/dist/jquery.min.js')
+		link(rel='stylesheet', type="text/css" href='bower_components/font-awesome/css/font-awesome.min.css')
+		script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
+		script(src='assets/js/parallax.js-1.3.1/parallax.min.js')
+		link(type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
 		link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(href='assets/css/parallax.css', rel='stylesheet', type='text/css')
+
+		script.
+			$( document ).ready(function() {
+				$('.parallax-window1').parallax({imageSrc: 'assets/img/science.jpg'});
+				$('.parallax-window2').parallax({imageSrc: 'assets/img/technology.jpg'});
+				$('.parallax-window3').parallax({imageSrc: 'assets/img/engineering3.jpg'});
+				$('.parallax-window4').parallax({imageSrc: 'assets/img/art.jpg'});
+				$('.parallax-window5').parallax({imageSrc: 'assets/img/math1.jpg'});
+				$('.parallax-window6').parallax({imageSrc: 'assets/img/manybots.jpeg'});
+			});
+
 	body
-		div.container
-			h3 The Achieve Foundation presents
-			h1 Maker Madness
-			h3 Powered by STEAM
+		h2.mm-red Science
+		|		  
+		#para-pane1.parallax-window1(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
+		h2.mm-blue Technology
+		|		  
+		#para-pane2.parallax-window2(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
+		h2.mm-purple Engineering
+		|		  
+		#para-pane3.parallax-window3(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
+		h2.mm-yellow Art
+		|		  
+		#para-pane4.parallax-window4(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
+		h2.mm-green Mathmatics
+		|		  
+		#para-pane5.parallax-window5(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
 
+		div#main
+			h3.mm-blue The Achieve Foundation Presents...
+			h1.rotate-10.mm-red Maker Madness!
+			p.mm-yellow Saturday, May 2nd
+			p.mm-yellow 10am - 4pm
+			p.mm-yellow Columbia High School
+			p.mm-blue.p-breathing-space Come make something
+			p.mm-red It's Free
 
-			br
-			br
-			br
-			br
-			p (This site us under construction. Please bear with us a few more days. Thanks.)
+		a#more-info-btn.btn.btn-primary(href="home") Learn More
 
-			//a.btn.btn-primary(href="home") Find Out More
+		#para-pane6.parallax-window6(data-parallax='scroll', data-image-src='/path/to/image.jpg')
+		|		  
 

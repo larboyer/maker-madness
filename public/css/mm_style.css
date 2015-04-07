@@ -2,6 +2,7 @@ body {
 	padding: 10px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	//font: arial;
+	background-color: black;
 }
 input.short-input {
 	width: 150px;
@@ -15,20 +16,51 @@ input.short-input {
 
 }
 
+#more-info-btn {
+	margin: 25px;
+	margin-top:0px;
+	width: 150px;
+	height: 48px;
+	font-size: 24px;
+	margin-left: 235px;
+}
+#mm-activities {
+	float: left;
+	padding: 10px;
+	border: 1px solid rgb(35,156,182);
+	font-size: 20px;
+}
+#mm-steam {
+	float: left;
+	padding: 10px;
+	border: 1px solid rgb(227,6,17);
+}
+#parent-warning {
+	font-size: 14px;
+	float: left;
+	margin-bottom: 20px;
+}
 
-.mm_red {
+ul li {
+	list-style-position: outside;
+}
+
+.mm-gray {
+	color: #ddd;
+}
+.mm-red {
 	color: rgb(227,6,17);
 }
-.mm_blue {
+.mm-blue {
 	color: rgb(35,156,182);
 }
-.mm_purple {
+.mm-purple {
 	color: rgb(194,64,254);
 }
-.mm_yellow {
+.mm-yellow {
 	color: rgb(255,151,0);
 }
-.mm_green {
+.mm-green {
 	color: rgb(77,170,41);
 }
 

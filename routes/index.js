@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
 	});
 });
 
-router.get('/intro2', function(req, res, next) {
-	res.render('intro2', { 
+router.get('/intro', function(req, res, next) {
+	res.render('intro', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
