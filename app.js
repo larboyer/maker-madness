@@ -10,10 +10,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//var mongo = require('mongodb');
-//var monk = require('monk');
-//var db = monk('localhost:27017/makermadness');
-
 var Db = require('mongodb').Db;
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
@@ -23,9 +19,6 @@ var MONGO_PORT = 27017;
 var MONGO_DB = "makermadness";
 var CONN_STR = "mongodb://" + MONGO_HOST + ":" + MONGO_PORT + "/" + MONGO_DB;
 
-console.log("Init db conn");
-
-// Lazy-load the db_conn
 var dbConn = undefined;
 
 function getDbConn() {
@@ -45,10 +38,9 @@ function getDbConn() {
 	}
 }
 
-// Ok, not that lazy. Get it at start so we are ready.
+// Preload the db conn.
 console.log("Diag 1000; getting DB Connection...");
 getDbConn();
-
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -110,6 +102,7 @@ app.use(function(err, req, res, next) {
 	});
 });
 
+/*
 function addPotentialMaker( maker_form_data ) {
 
 	var collection = db.get('potential_makers');
@@ -121,5 +114,6 @@ function addPotentialMaker( maker_form_data ) {
 		}
 	}); 
 }
+*/
 
 module.exports = app;
