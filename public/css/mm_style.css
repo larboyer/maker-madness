@@ -2,7 +2,7 @@ body {
 	padding: 10px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	//font: arial;
-	background-color: black;
+	//background-color: #777;
 }
 input.short-input {
 	width: 150px;
@@ -26,7 +26,7 @@ input.short-input {
 #mm-activities {
 	float: left;
 	padding: 10px;
-	border: 1px solid rgb(35,156,182);
+	//border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 }
 
@@ -65,7 +65,7 @@ input.short-input {
 #mm-steam {
 	float: left;
 	padding: 10px;
-	border: 1px solid rgb(227,6,17);
+	//border: 1px solid rgb(227,6,17);
 }
 #mm-steam li {
 	list-style-type: none;
@@ -178,8 +178,14 @@ h2 {
 	clear: both;
 	font-size: 18px;
 }
-
-
-
+#maker-signup-container {
+	background-color:#222;
+}
+#maker-signup-container form{
+}
+.control-label{
+	text-align: right;
+	font-size: 15px;
+}
 
 

@@ -9,6 +9,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/makermadness');
 
@@ -27,6 +28,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req,res,next){
+	// Send the database client along with the request obj.
+	console.log("Diag 2000; loading db creds");
+	req.db = db;
+	next();
+});
+
+
 app.use('/', routes);
 app.use('/users', users);
 
@@ -37,11 +46,6 @@ app.use(function(req, res, next) {
 	next(err);
 });
 
-app.use(function(req,res,next){
-	// Send the database client along with the request obj.
-	req.db = db;
-	next();
-});
 
 // error handlers
 
@@ -69,7 +73,6 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-
 function addPotentialMaker( maker_form_data ) {
 
 	var collection = db.get('potential_makers');
@@ -81,6 +84,5 @@ function addPotentialMaker( maker_form_data ) {
 		}
 	}); 
 }
-
 
 module.exports = app;

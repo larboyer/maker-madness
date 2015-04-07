@@ -74,6 +74,12 @@ router.post('/maker_signup', function(req, res, next) {
 
 });
 
+router.get('/sponsor_signup', function(req, res, next) {
+	res.render('sponsor_signup', { 
+		title: 'Achieve Maker Madness' 
+	});
+});
+
 router.post('/test01', function(req, res, next) {
 	res.render('maker_signup', { 
 		title: 'Achieve Maker Madness' 
@@ -92,16 +98,14 @@ router.get('/makers_to_contact', function(req, res, next) {
 		title: 'Achieve Maker Madness' 
 	});
 });
-
+/*
 router.post('makers_signup', function(req, res, next) {
 	console.log("Diag 1000; makers_signup");
 
-	/*
-	res.render('makers_to_contact', { 
-		title: 'Achieve Maker Madness' 
-	});
-	*/
+	//res.render('makers_to_contact', { 
+	//	title: 'Achieve Maker Madness' 
+	//});
 });
-
+*/
 
 module.exports = router;
