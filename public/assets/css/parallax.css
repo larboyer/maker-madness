@@ -30,23 +30,6 @@ body {
 .p-breathing-space {
 	margin-top:10px;
 }
-/*
-.mm-red {
-    color: rgb(227,6,17);
-}
-.mm-blue {
-    color: rgb(35,156,182);
-}
-.mm-purple {
-    color: rgb(194,64,254);
-}
-.mm-yellow {
-    color: rgb(255,151,0);
-}
-.mm-green {
-    color: rgb(77,170,41);
-}
-*/
 h1 {
 	font-size: 74px;
 	font-weight: 200;
@@ -60,23 +43,49 @@ h2 {
 	font-weight: 200;
 	padding-left: 20px;
 }
-h3 {
+
+#main-intro h3 {
 	font-size: 36px;
 	font-weight: 200;
 	padding-left: 20px;
 }
+
 h4 {
+	color: green;
+	//font-size: 20px;
+	//font-weight: 200;
+	//padding-left: 220px;
+}
+#main-intro h4 {
 	font-size: 20px;
 	font-weight: 200;
-	padding-left: 220px;
+	//padding-left: 220px;
 }
 p {
 	font-size: 20px;
 	font-weight: 200;
-	padding-left: 520px;
+	//padding-left: 520px;
+	float: right;
 	line-height: 100%
 	padding: 0;
 	margin: 0;
+}
+hr {
+	visibility: hidden;
+}
+
+
+#main-info p {
+	font-size: 20px;
+	font-weight: 200;
+	float: right;
+	line-height: 100%
+	padding: 0;
+	margin: 0;
+	margin-right: 20px;
+	clear:right;
+}
+#main-info {
 }
 
 .rotate {

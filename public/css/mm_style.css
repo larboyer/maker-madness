@@ -9,11 +9,10 @@ input.short-input {
 }
 .form-group {
 	//border: 1px solid blue;
-//	margin-bottom: 25px;	
+	//	margin-bottom: 25px;	
 }
 #maker-info-form .form-group {
 	margin-bottom: 35px;	
-
 }
 
 #more-info-btn {
@@ -30,10 +29,46 @@ input.short-input {
 	border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 }
+
+#help-section{
+	float: right;
+	clear: right;
+	margin:0;
+	padding:0;
+	margin-top:30px;
+}
+
+#help-section h5{
+	margin-top: 20px;
+	float: right;
+	clear: right;
+	padding: 10px;
+	//border: 1px solid rgb(35,156,182);
+	font-size: 20px;
+	text-align: right;
+	margin:0;
+	padding:0;
+	margin-right: 20px;
+}
+
+#help-section a{
+	float: right;
+	clear: right;
+	padding: 10px;
+	//border: 1px solid rgb(35,156,182);
+	font-size: 20px;
+	width: 180px;
+	text-align: right;
+	margin:5px;
+	margin-right: 20px;
+}
 #mm-steam {
 	float: left;
 	padding: 10px;
 	border: 1px solid rgb(227,6,17);
+}
+#mm-steam li {
+	list-style-type: none;
 }
 #parent-warning {
 	font-size: 14px;
@@ -93,7 +128,9 @@ hr.real-hr {
 //	border: 1px solid green;
 }	
 
-
+hr {
+	clear: both;
+}
 
 #main-menu {
 }
@@ -103,6 +140,11 @@ hr.real-hr {
 	font-weight: 400; 
 	padding-top: 7px;
 	margin-bottom: 0;
+}
+
+.bottom-breathing-space {
+	margin-bottom: 40px;
+	margin: 4px solid red;
 }
 
 .control-label {
@@ -119,3 +161,25 @@ h2 {
 	font-family: arial;
 	color: red;
 }
+#makers-main-container h3 {
+	float: left;
+	margin: 10px;
+	margin-top: 30px;
+	clear: both;
+}
+#makers-main-container p {
+	float: left;
+	font-size: 16px;
+	line-height: 1.2;
+	margin: 7px;
+}
+#makers-main-container a {
+	float: left;
+	clear: both;
+	font-size: 18px;
+}
+
+
+
+
+

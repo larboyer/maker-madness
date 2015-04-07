@@ -46,14 +46,9 @@ router.get('/sponsors', function(req, res, next) {
 		title: 'Achieve Maker Madness' 
 	});
 });
-router.get('/sponsors', function(req, res, next) {
-	res.render('makers_wanted', { 
-		title: 'Achieve Maker Madness' 
-	});
-});
 
-router.get('/volunteers_wanted', function(req, res, next) {
-	res.render('volunteers_wanted', { 
+router.get('/volunteers', function(req, res, next) {
+	res.render('volunteers', { 
 		title: 'Achieve Maker Madness' 
 	});
 });

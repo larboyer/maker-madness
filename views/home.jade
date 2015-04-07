@@ -1,11 +1,12 @@
 extends layout
 
 block content
-	div.container
+	div.container-fluid
 		br
 		div#main
 			h3.mm-blue Come make something at
 			h1.rotate-10.mm-red Maker Madness!
+		div#main-info
 			p.mm-yellow Saturday, May 2nd
 			p.mm-yellow 10am - 4pm
 			p.mm-yellow Columbia High School
@@ -13,16 +14,24 @@ block content
 		//div.abs-pos.icon.fa.fa-lock
 
 		h4.mm-gray.col-md-6#mm-activities Over 20 hands-on activities for children K-8 including...
-			li 3-D printing
-			li "Play Dough" electronics
-			li Hour of Code
-			li Sewing and knitting
-			li Doll Crafts
-			li Lego Madness
-			li Robotics
-			li Origami
-			li Projectiles
-			h5 ...and more....
+			ul
+				li 3-D printing
+				li "Play Dough" electronics
+				li Hour of Code
+				li Sewing and knitting
+				li Doll Crafts
+				li Lego Madness
+				li Robotics
+				li Origami
+				li Projectiles
+				h5 ...and more....
+				b
+
+		div#help-section.col-md-3
+			h5.mm-blue Want to Help?
+			a#more-info-btn.btn.btn-primary(href="makers") Be a Maker
+			a#more-info-btn.btn.btn-primary(href="sponsors") Sponsor a Station
+			a#more-info-btn.btn.btn-primary(href="volunteers") Volunteer to Help
 			br
 
 		h4.mm-gray.col-md-6#mm-steam Find out what '<b class="mm-red">S</b><b class="mm-blue">T</b><b class="mm-yellow">E</b><b class="mm-purple">A</b><b class="mm-green">M</b>' education is all about!
