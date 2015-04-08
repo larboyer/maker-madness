@@ -102,18 +102,4 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-/*
-function addPotentialMaker( maker_form_data ) {
-
-	var collection = db.get('potential_makers');
-	collection.insert({
-		"potential_maker": roleName
-	}, function(err, doc) {
-		if( err ) {
-			console.log("Diag 1000; successfully inserted:" + doc);
-		}
-	}); 
-}
-*/
-
 module.exports = app;

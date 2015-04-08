@@ -1,0 +1,44 @@
+extends layout_private
+
+block content
+	h3 Maker/Volunteer Master
+	table.table.table-striped.table-bordered.table-hover
+		thead
+			tr
+				th Name
+				th Type
+				th Email
+				th IsTeacher
+				th Subject
+				th School
+				th KidsAge
+				th isBusinessOwner
+				th BusinessName
+				th BusinessDesc
+				th isCommunityMember
+				th desiredProjectDesc
+				th Status
+
+		each maker, i in makerArray
+			tr(id="#{maker._id}")
+				td=maker.name
+				td=maker.type
+				td=maker.email
+				td=maker.is_teacher
+				td=maker.subject
+				td=maker.school
+				td=maker.kids_age
+				td=maker.is_business_owner
+				td=maker.business_name
+				td=maker.business_desc
+				td=maker.is_community_member
+				td=maker.desired_project_desc
+				td
+					select#statusSelect
+						each status_code_rec,key in masterCodeMap.userStatesMap
+							option(value=key,selected=maker.status == key) #{status_code_rec.longname}
+					
+var userStates = [
+	{state_id:"new", longname:"New"},
+
+

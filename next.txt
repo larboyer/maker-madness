@@ -1,0 +1,14 @@
+X 	Intro - move up text
+X  	Simplify Buttons
+X	Link to maker advice after submitting the form. 		
+
+	Make fields in maker table editable
+	Add a project table
+	Make the project table editable
+
+Aesthetic
+	Change fonts
+	Change word height to 120 %
+	Standardize h1, h2, h3, h4, h5
+	Limit line width
+

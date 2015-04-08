@@ -13,9 +13,12 @@ var userStates = [
 	{state_id:"contacted-twice", longname:"Contacted Twice"},
 	{state_id:"honing-ideas", longname:"Honing Ideas"},
 	{state_id:"ready-for-faire", longname:"Ready for Faire"},
-	{state_id:"not-interested-afterall", longname:"Not Interested Afterall"}
+	{state_id:"not-interested-afterall", longname:"Not Interested After All"}
 ];
 
+var masterCodeMap = {
+	'userStatesMap':userStates
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -26,16 +29,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/intro', function(req, res, next) {
 	res.render('intro', { 
-		title: 'Achieve Maker Madness' 
-	});
-});
-router.get('/index4', function(req, res, next) {
-	res.render('index4', { 
-		title: 'Achieve Maker Madness' 
-	});
-});
-router.get('/index5', function(req, res, next) {
-	res.render('index5', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
@@ -113,10 +106,45 @@ router.post('/volunteer_signup', function(req, res, next) {
 	});
 });
 
+// Boyer here
+router.get('/maker_master', function(req, res, next) {
+
+	var db_conn = req.db;
+	if( !db_conn ) {
+		console.log("Err  8786; can't get valid DB conn");
+		res.render('error', { 
+	  		message: "Couldn't get a database connection",
+  			error: {status:"Error 8786", stack:""}
+		});
+	}
+
+	var collection = db_conn.collection( DB_MAKER_COLL );
+	if( !collection ) {
+		console.log("Err  8787; can't get valid DB conn");
+		res.render('error', { 
+	  		message: "Couldn't get the maker madness collection",
+  			error: {status:"Error 8787", stack:""}
+		});
+	} else {
+		collection.find( {}, {sort:{_id:1}}).toArray( function( err, docs ) {
+			if( err ) {
+				console.log("Err  8788; can't get valid DB conn");
+				res.render('error', { 
+			  		message: "Problem with query:" + err,
+		  			error: {status:"Error 8788", stack:""}
+				});
+			} else {
+				res.render('maker_master', { 
+					'makerArray': docs,
+					'masterCodeMap': masterCodeMap
+				});
+			}
+		});
+	}
+});
 
 
-
-// Returns a result obj wiht a .result field which is either success or failure. 
+// Returns a result obj with a .result field which is either success or failure. 
 // If failure, there is a failure message. 
 // If success, result is in .data
 function insertRec( db_conn, rec, callback ) {
