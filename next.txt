@@ -2,6 +2,7 @@ X 	Intro - move up text
 X  	Simplify Buttons
 X	Link to maker advice after submitting the form. 		
 
+	Fix 'hamberger' menu bug.
 	Make fields in maker table editable
 	Add a project table
 	Make the project table editable
