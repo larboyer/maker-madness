@@ -84,6 +84,7 @@ block content
 			$.post( "/maker_signup", maker_data, function(data) {
 				console.log("Diag 2000; success: data:");
 				console.log(data);
+				window.location.replace("home");
 			}).fail( function() {
 				console.log("Failed");
 			});

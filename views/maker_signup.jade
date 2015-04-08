@@ -49,16 +49,11 @@ block content
 				return false;
 			}
 
-			console.log("Diag 2000");
 			var maker_data = {}
-
-			// Boyer here
 
 			maker_data.name = $("#name").val();
 			maker_data.email = $("#email").val();
 			maker_data.is_teacher = $("#is-teacher").is(':checked');
-					
-
 	
 			//maker_data.grade = $("#grade").val();
 			maker_data.subject = $("#subject").val();
@@ -84,6 +79,10 @@ block content
 			$.post( "/maker_signup", maker_data, function(data) {
 				console.log("Diag 2000; success: data:");
 				console.log(data);
+
+				// Boyer here; redirect to maker advice. 	
+				window.location.replace("makers");
+	
 			}).fail( function() {
 				console.log("Failed");
 			});
@@ -254,11 +253,13 @@ block content
 					<hr />
 				</div>
 				-->
+				<!--	
 				<div class="form-group mm-gray">
 					<label class="control-label col-sm-3">Participation</label>
 					<label class="right-col-text col-sm-9">How would you like to participate in Maker Madness?</label>
 					<hr />
 				</div>
+
 				<div class="form-group mm-gray">
 					<label class="control-label col-sm-3"></label>
 					<div class="col-sm-9">
@@ -272,6 +273,8 @@ block content
 					</div>
 					<hr />
 				</div>
+				-->
+
 				<div class="form-group mm-gray">
 					<label class="control-label col-sm-3">Project Description</label>
 					<label class="right-col-text col-sm-9">

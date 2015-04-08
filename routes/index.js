@@ -4,20 +4,8 @@
 //----------------------------------------------------------
 var express = require('express');
 var router = express.Router();
-/*
-var Db = require('mongodb').Db;
-var MongoClient = require('mongodb').MongoClient;
-var Server = require('mongodb').Server;
 
-var MONGO_HOST = "localhost";
-var MONGO_PORT = 27017;
-var MONGO_DB = "test1";
-var CONN_STR = "mongodb://" + MONGO_HOST + ":" + MONGO_PORT + "/" + MONGO_DB;
-*/
-
-//var monk = require('monk');
-//var db = monk('localhost:27017/makermadness');
-var MakerDbAdapter = require('../makerDbAdapter.js');
+//var MakerDbAdapter = require('../makerDbAdapter.js');
 
 var userStates = [
 	{state_id:"new", longname:"New"},
@@ -27,6 +15,7 @@ var userStates = [
 	{state_id:"ready-for-faire", longname:"Ready for Faire"},
 	{state_id:"not-interested-afterall", longname:"Not Interested Afterall"}
 ];
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
