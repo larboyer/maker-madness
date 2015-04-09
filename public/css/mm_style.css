@@ -1,8 +1,6 @@
 body {
 	padding: 10px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	//font: arial;
-	//background-color: #777;
 }
 input.short-input {
 	width: 150px;
@@ -81,7 +79,7 @@ ul li {
 }
 
 .mm-gray {
-	color: #ddd;
+	color: #555;
 }
 .mm-red {
 	color: rgb(227,6,17);
@@ -179,7 +177,7 @@ h2 {
 	font-size: 18px;
 }
 #maker-signup-container {
-	background-color:#222;
+	background-color:#white;
 }
 #maker-signup-container form{
 }

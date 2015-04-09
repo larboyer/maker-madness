@@ -1,0 +1,55 @@
+/*
+$font-face {
+	font-family:"2Dumb";
+	src: url("2Dumb.ttf")
+}
+$font-face {
+	font-family:"3Dumb";
+	src: url("3Dumb.ttf")
+}
+*/
+/*
+@font-face {
+  font-family: '3DumbRegular';
+  src: url(‘your-path/3Dumb-webfont.eot’);
+  src: local('?'), url('3Dumb-webfont.woff') format('woff'), url('3Dumb-webfont.ttf') format('truetype'), url('3Dumb-webfont.svg#webfont57ztNrX6') format('svg');
+}
+*/
+//  src: url(‘your-path/3Dumb-webfont.eot’);
+@font-face {
+  font-family: '3DumbRegular';
+  src: url('assets/fonts/2Dumb.ttf');
+  src: local('?'), url('3Dumb-webfont.woff') format('woff'), url('3Dumb-webfont.ttf') format('truetype'), url('3Dumb-webfont.svg#webfont57ztNrX6') format('svg');
+}
+//  src: url(‘your-path/3Dumb-webfont.eot’);
+/*
+@font-face {
+  font-family: 'BelligerentRegular';
+  src: url('assets/fonts/belligerent.ttf');
+  src: local('?'), url('3Dumb-webfont.woff') format('woff'), url('3Dumb-webfont.ttf') format('truetype'), url('3Dumb-webfont.svg#webfont57ztNrX6') format('svg');
+}
+*/
+h1 {
+	color: green;
+	font-family: 'Belligerent'
+}
+
+h2 {
+	color: blue;
+	font-family: '3Dumb';
+	font-size: 65px;
+}
+h3 {
+	color: green;
+	font-family: '3Dumb'
+}
+
+
+
+.rotate-10 {
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg);
+	-o-transform: rotate(-10deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}

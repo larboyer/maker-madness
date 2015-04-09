@@ -203,6 +203,11 @@ router.get('/makers_to_contact', function(req, res, next) {
 		title: 'Achieve Maker Madness' 
 	});
 });
+
+router.get('/font_test', function(req, res, next) {
+	res.render('font_test', { 
+	});
+});
 /*
 router.post('makers_signup', function(req, res, next) {
 	console.log("Diag 1000; makers_signup");
