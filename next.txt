@@ -2,7 +2,7 @@ X 	Intro - move up text
 X  	Simplify Buttons
 X	Link to maker advice after submitting the form. 		
 
-	Fix 'hamberger' menu bug.
+	Fix confirm-email functionality.
 	Make fields in maker table editable
 	Add a project table
 	Make the project table editable
@@ -12,4 +12,7 @@ Aesthetic
 	Change word height to 120 %
 	Standardize h1, h2, h3, h4, h5
 	Limit line width
+
+Low Pri
+	Fix 'hamberger' menu bug.
 
