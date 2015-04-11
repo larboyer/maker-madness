@@ -63,6 +63,11 @@ h3 {
 	font-family: 'mypermiansans';
 }
 
+#in-my-div {
+	color: blue;
+	font-family: 'mypermiansans';
+}
+
 /*
 .permian {
 	color: black;
@@ -77,3 +82,10 @@ h3 {
 	-o-transform: rotate(-10deg);
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
+
+
+#in-my-div h3 {
+	font-family: 
+}
+
+

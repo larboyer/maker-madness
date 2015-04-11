@@ -2,11 +2,17 @@ body {
 	padding: 10px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+div.top-menu-spacing {
+	height: 51px;
+}
+.vspace {
+	color: orange;
+}
 input.short-input {
 	width: 150px;
 }
 .form-group {
-	//border: 1px solid blue;
 	//	margin-bottom: 25px;	
 }
 #maker-info-form .form-group {
@@ -27,7 +33,9 @@ input.short-input {
 	//border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 }
-
+.right-just {
+	text-align: right;
+}
 #help-section{
 	float: right;
 	clear: right;
@@ -142,7 +150,6 @@ hr {
 
 .bottom-breathing-space {
 	margin-bottom: 40px;
-	margin: 4px solid red;
 }
 
 .control-label {
@@ -159,17 +166,37 @@ h2 {
 	font-family: arial;
 	color: red;
 }
+
 #makers-main-container h3 {
 	float: left;
-	margin: 10px;
-	margin-top: 30px;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+	margin-top:0em;
+	margin-bottom:0.5em;
 	clear: both;
+	font-family:'permiansanstypefaceregular'
 }
+
+#makers-main-container-xs h3 {
+	float: left;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+	margin-top:0em;
+	margin-bottom:0.5em;
+	clear: both;
+	font-family:'permiansanstypefaceregular'
+}
+
+
 #makers-main-container p {
 	float: left;
 	font-size: 16px;
 	line-height: 1.2;
-	margin: 7px;
+	margin: 0;
+	margin-top: 0em;
+	margin-bottom: 1em;
 }
 #makers-main-container a {
 	float: left;
@@ -191,10 +218,23 @@ h3 {
 }
 
 #special-font {
-	font-family:'permiansanstypefaceregular'
+	font-family:'permiansanstypefaceregular';
+	font-size: 55px;
 }
 
 .permian-font {
 	font-family:'permiansanstypefaceregular'
+}
+#in-my-div h3 {
+    font-family: 'robotoregular';
+	color: red;
+}
+#in-my-div h3.test1 {
+    font-family: 'robotoregular';
+	color: blue;
+}
+#in-my-div h3.test2 {
+    font-family: 'times';
+	color: green;
 }
 
