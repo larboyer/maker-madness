@@ -1,6 +1,9 @@
 var Spreadsheet = require('edit-google-spreadsheet');
 var fs = require('fs');
 
+var SPREADSHEET_NAME = "spreadsheet_data.json";
+
+
 Spreadsheet.load({
     debug: true,
     spreadsheetId: '1yk2WoulEZBeMWma3hG4rjmghjdZOI8yrba7ZVB1s8pc',
@@ -18,12 +21,15 @@ Spreadsheet.load({
 			if (err) {
 				console.log("Err  2828; problem accessing sheet:" + err);
 			} else {
-				console.dir(rows);
-				console.dir(info);
+				//console.dir(rows);
+				//console.dir(info);
+				console.log("Diag 1000; spreadsheet data read");
 				write_proj_data_file(rows, info);
 			}
 		});
 	}
+});
+
 function write_proj_data_file(rows, info) {
 
 	var out_obj = {}
@@ -31,8 +37,13 @@ function write_proj_data_file(rows, info) {
 	out_obj['sheet_info'] = rows;
 	// Boyer here
 
-	fs.writeFile("spreadsheet_ata.json", k	
-
+	fs.writeFile( SPREADSHEET_NAME, JSON.stringify(out_obj), function(err) {
+		if(err) {
+			console.log("Err  8373; problem writing file:" + err);
+		} else {
+			console.log("Diag 1001; spreadsheet data written to " + SPREADSHEET_NAME);
+		}
+	});	
 }
 
 
