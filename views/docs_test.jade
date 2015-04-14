@@ -1,0 +1,89 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		title Docs Test
+		link(rel='stylesheet', href='/assets/fonts/font_face_master.css')
+		link(rel='stylesheet', href='/assets/css/mm_style.css')
+		script(src='bower_components/jquery/dist/jquery.min.js')
+		
+		//link(rel='stylesheet', href='assets/fonts/2Dumb.ttf')
+		link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', type="text/css" href='bower_components/font-awesome/css/font-awesome.min.css')
+		//link(href='assets/css/font_test.css', rel='stylesheet', type='text/css')
+		script.
+			var clientId = '837050751313';
+			var apiKey = 'AIzaSyAdjHPT5Pb7Nu56WJ_nlrMGOAgUAtKjiPM';
+			var scopes = 'https://www.googleapis.com/auth/plus.me';
+
+			function handleClientLoad() {
+				// Step 2: Reference the API key
+				gapi.client.setApiKey(apiKey);
+				window.setTimeout(checkAuth,1);
+			}
+
+			function checkAuth() {
+				gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+			}
+
+			function handleAuthResult(authResult) {
+				var authorizeButton = document.getElementById('authorize-button');
+				if (authResult && !authResult.error) {
+					authorizeButton.style.visibility = 'hidden';
+					makeApiCall();
+				} else {
+					authorizeButton.style.visibility = '';
+					authorizeButton.onclick = handleAuthClick;
+				}
+			}
+
+			function handleAuthClick(event) {
+				// Step 3: get authorization to use private data
+				gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+				return false;
+			}
+
+			// Load the API and make an API call.  Display the results on the screen.
+			function makeApiCall() {
+				// Step 4: Load the Google+ API
+				gapi.client.load('plus', 'v1').then(function() {
+					// Step 5: Assemble the API request
+					var request = gapi.client.plus.people.get({
+						'userId': 'me'
+					});
+					// Step 6: Execute the API request
+					request.then(function(resp) {
+						var heading = document.createElement('h4');
+						var image = document.createElement('img');
+						image.src = resp.result.image.url;
+						heading.appendChild(image);
+						heading.appendChild(document.createTextNode(resp.result.displayName));
+
+						document.getElementById('content').appendChild(heading);
+					}, function(reason) {
+						console.log('Error: ' + reason.result.error.message);
+					});
+				});
+			}
+
+
+	body
+		div#in-my-div
+			h3.permian-font Testing Accessing Google Docs
+			button#authorize-button( style="visibility: hidden") Authorize
+
+			table
+				each proj, i in projDataObj.row_data
+					// Ignore header column
+					if( i != 1 )
+						if( projDataObj.row_data[i][2] == 1 ) 
+							tr
+								td= projDataObj.row_data[i][3]
+								td= projDataObj.row_data[i][4]
+
+
+
+
+

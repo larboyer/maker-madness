@@ -9,13 +9,15 @@ html
 		script(src='bower_components/jquery/dist/jquery.min.js')
 		link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', type="text/css" href='bower_components/font-awesome/css/font-awesome.min.css')
+		script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
 		link(href='assets/css/parallax.css', rel='stylesheet', type='text/css')
 
 	body
-		.navbar.hidden-xs.navbar-default.navbar-fixed-top(role='navigation')
+
+		.navbar.navbar-default.navbar-fixed-top(role='navigation')
 			.container
 				.navbar-header
-					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
 						span.sr-only Toggle navigation
 						span.icon-bar
 						span.icon-bar
@@ -31,16 +33,5 @@ html
 							a(href="http://achievefoundation.org/wp-content/uploads/2015/03/Maker-Madns-sponsor-form.pdf") Sponsors
 						li
 							a(href='volunteer_signup') Volunteers
-
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(href='home') Home
-						li
-							a(href='makers') Makers
-						li
-							a(href="http://achievefoundation.org/wp-content/uploads/2015/03/Maker-Madns-sponsor-form.pdf") Sponsors
-						li
-
-
 
 		block content

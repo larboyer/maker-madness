@@ -2,6 +2,10 @@ body {
 	padding: 10px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+div#main h1 {
+	color: purple;
+	font-family:belligerent_madnessregular;
+}
 
 div.top-menu-spacing {
 	height: 51px;
@@ -237,4 +241,25 @@ h3 {
     font-family: 'times';
 	color: green;
 }
+
+.navbar-header {
+	//border: 1px solid blue;
+}
+
+.navbar-collapse { 
+	//border: 1px solid red;
+}
+.left-col {
+	vertical-align: text-top;
+	padding-right: 10px;
+	text-align: right;
+	font-weight: 800;
+	line-height: 1.23;
+}
+.right-col {
+	//border: 1px solid blue;
+	padding-bottom: 8px;
+	line-height: 1.23;
+}
+
 

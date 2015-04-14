@@ -5,7 +5,11 @@
 var express = require('express');
 var router = express.Router();
 
-//var MakerDbAdapter = require('../makerDbAdapter.js');
+var fs = require('fs');
+var PROJ_SPREADSHEET_DATA_NAME = "spreadsheet_data.json";
+
+var proj_data_obj = JSON.parse(fs.readFileSync(PROJ_SPREADSHEET_DATA_NAME, 'utf8'));
+console.log("data:" + proj_data_obj.row_data[2][2]);
 
 var userStates = [
 	{state_id:"new", longname:"New"},
@@ -23,7 +27,7 @@ var masterCodeMap = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	res.render('intro', { 
-		title: 'Achieve Maker Madness' 
+		'title': 'Achieve Maker Madness'
 	});
 });
 
@@ -35,7 +39,8 @@ router.get('/intro', function(req, res, next) {
 
 router.get('/home', function(req, res, next) {
 	res.render('home', { 
-		title: 'Achieve Maker Madness' 
+		title: 'Achieve Maker Madness',
+		'projDataObj': proj_data_obj
 	});
 });
 
@@ -208,6 +213,19 @@ router.get('/font_test', function(req, res, next) {
 	res.render('font_test', { 
 	});
 });
+
+router.get('/docs_test', function(req, res, next) {
+	res.render('docs_test', { 
+		'projDataObj': proj_data_obj
+	});
+});
+
+/*
+router.get('/docs_test', function(req, res, next) {
+	res.render('docs_test', { 
+	});
+});
+*/
 /*
 router.post('makers_signup', function(req, res, next) {
 	console.log("Diag 1000; makers_signup");
