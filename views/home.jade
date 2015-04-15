@@ -2,43 +2,39 @@ extends layout
 
 block content
 	div.top-menu-spacing
-	div.vspace &nbsp
-	div.container-fluid
-		br
-		div#main
-			div.row
-				//h3.mm-blue Come make something at
-				h1.rotate-10.mm-red.col-md-12 Maker Madness!
-			div.row
-				div#main-info
-					p.mm-yellow Saturday, May 2nd
-					p.mm-yellow 10am - 4pm
-					p.mm-yellow Columbia High School
+	div#main-home.container-fluid
+		div#main-home1
+			h1.rotate-10.mm-red.col-md-12 Maker Madness!
+		div#main-info
+			p.mm-yellow.time-date Columbia High School
+			p.mm-yellow.time-date Saturday, May 2<sup>nd</sup>
+			p.mm-yellow.time-date 10am - 4pm
+			hr
+		div.row#secondary-panel
+			div.col-sm-8
+				div#in-my-div
+					//button#authorize-button( style="visibility: hidden") Authorize
 
-			div.row
-				div#help-section.col-md-4
-					h5.mm-blue Want to get involved?
-					a#more-info-btn.btn.btn-primary(href="maker_signup") Be a Maker
-					a#more-info-btn.hidden-xs.btn.btn-primary(href="http://achievefoundation.org/wp-content/uploads/2015/03/Maker-Madns-sponsor-form.pdf") Sponsor a Station
-					a#more-info-btn.btn.btn-primary(href="volunteer_signup") Volunteer to Help
-					br
-				div.col-md-8
-					div#in-my-div
-						h3.permian-font Over 20 hands-on activies for kids K-8 including...
-						//button#authorize-button( style="visibility: hidden") Authorize
+					table
+						tr
+							td
+							td
+								h3.permian-font Over 20 hands-on activies for kids K-8 including...
+						each proj, i in projDataObj.row_data
+							// Ignore header column
+							if( i != 1 )
+								if( projDataObj.row_data[i][2] == 1 ) 
+									tr
+										td.left-col= projDataObj.row_data[i][3]
+										td.right-col= projDataObj.row_data[i][4]
 
-						table
-							each proj, i in projDataObj.row_data
-								// Ignore header column
-								if( i != 1 )
-									if( projDataObj.row_data[i][2] == 1 ) 
-										tr
-											td.left-col= projDataObj.row_data[i][3]
-											td.right-col= projDataObj.row_data[i][4]
-	
-	
+			div.col-sm-4#help-section
+				h3.mm-blue.right-just Want to get involved?
+				a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
+				a.help-btn.hidden-xs.btn.btn-primary(href="http://achievefoundation.org/wp-content/uploads/2015/03/Maker-Madns-sponsor-form.pdf") Sponsor a Station
+				a.help-btn.btn.btn-primary(href="volunteer_signup") Volunteer to Help
 
-			div.row
+
 
 
 		h4.mm-gray.col-md-6#mm-steam Find out what '<b class="mm-red">S</b><b class="mm-blue">T</b><b class="mm-yellow">E</b><b class="mm-purple">A</b><b class="mm-green">M</b>' education is all about!
@@ -48,7 +44,7 @@ block content
 				li Try <b class="mm-yellow">E</b>ngineering challenges like building bridges 
 				li Create <b class="mm-purple">A</b>rt projects that explore the link between technology and beauty
 				li See the <b class="mm-green">M</b>ath behind geodesic structures and forms in Nature.
-
+	
 		br 
-		h6.mm-gray.col-md-12#parent-warning Parents, please accompany your children to the event.
+	h6.mm-gray.col-md-12#parent-warning Parents, please accompany your children to the event.
 

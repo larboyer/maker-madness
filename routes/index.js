@@ -50,17 +50,21 @@ router.get('/makers', function(req, res, next) {
 	});
 });
 
+/*
 router.get('/sponsors', function(req, res, next) {
 	res.render('sponsors', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
+*/
 
+/*
 router.get('/volunteers', function(req, res, next) {
 	res.render('volunteers', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
+*/
 
 router.get('/maker_signup', function(req, res, next) {
 	res.render('maker_signup', { 

@@ -17,14 +17,15 @@ div#main-home1 h1 {
 	font-family:belligerent_madnessregular;
 }
 #main-home #main-info {
-	background-color: red;
+	margin-top: -30px;
+	margin-right:5px;
+	padding: 0;
 }
 div#main-info hr{
 	border:0;
 	margin:0;
 }
 .test02 {
-	border: 1px solid red;
 }
 
 div#main-intro2 h2 {
@@ -77,6 +78,13 @@ input.short-input {
 	margin-bottom: 35px;	
 }
 
+/*
+// Good button, first page
+a#more-info-btn.btn.btn-primary(href="home") Learn More
+// Bad button, second page. 
+a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
+*/
+
 #more-info-btn {
 	margin: 25px;
 	margin-top:-30px;
@@ -86,19 +94,17 @@ input.short-input {
 	font-size: 24px;
 }
 
-.help-btn {
-	margin: 25px;
-	margin-top:0px;
-	width: 150px;
-	height: 48px;
-	font-size: 24px;
-	margin-left: 235px;
+#help-section .help-btn {
+	width: 180px;
+	height: 42px;
+	padding-top:8px;	
+	font-size: 18px;
+	margin:5px 0px;
 }
 
 #mm-activities {
 	float: left;
 	padding: 10px;
-	//border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 }
 .right-just {
@@ -110,9 +116,9 @@ input.short-input {
 	clear: right;
 	margin:0;
 	padding:0;
+	padding-right: 20px;
 //	margin-top:30px;
 //	margin-right: 20px;
-	border: 1px solid red;
 }
 #help-section h5{
 	margin-top: 20px;
@@ -132,7 +138,6 @@ input.short-input {
 }
 #main-home #secondary-panel {
 	margin-top: 15px;
-	border: 1px solid blue;
 }
 
 #help-section a{
