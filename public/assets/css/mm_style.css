@@ -140,6 +140,33 @@ a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
 	margin-top: 15px;
 }
 
+#tertiary-panel {
+}
+#tertiary-panel h4 {
+	text-align: left;
+	float: left;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	margin-top: 40px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	font-weight: 600; 
+	font-size: 20px;
+}
+
+#tertiary-panel p {
+	clear: both;
+	text-align: left;
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	margin-left: 30px;
+	line-height: 1.25;
+}
+
+
 #help-section a{
 	float: right;
 	clear: both;
@@ -152,16 +179,34 @@ a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
 	//text-align: right;
 	//margin:5px;
 	//margin-right: 20px;
-	border: 1px solid blue;
+	//border: 1px solid blue;
 }
 
 #mm-steam {
 	float: left;
 	padding: 10px;
 	//border: 1px solid rgb(227,6,17);
+	color: black;
 }
+h4#mm-steam{
+	float: left;
+	//padding: 10px;
+	//padding-left: 30px;
+//	border: 1px solid blue;
+	//color:red;
+	//margin-left:30px;
+}
+
+h4#mm-steam p{
+	float: left;
+	//padding: 10px;
+	//padding-left: 30px;
+	//margin-left:30px;
+}
+
 #mm-steam li {
 	list-style-type: none;
+	padding-left: 30px;
 }
 #parent-warning {
 	font-size: 14px;
