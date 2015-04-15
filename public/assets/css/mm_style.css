@@ -6,6 +6,60 @@ div#main h1 {
 	color: purple;
 	font-family:belligerent_madnessregular;
 }
+div#main-intro h1 {
+	margin-top: 10px;
+	color: purple;
+	font-family:belligerent_madnessregular;
+}
+div#main-home1 h1 {
+	margin-top: 20px;
+	color: purple;
+	font-family:belligerent_madnessregular;
+}
+#main-home #main-info {
+	background-color: red;
+}
+div#main-info hr{
+	border:0;
+	margin:0;
+}
+.test02 {
+	border: 1px solid red;
+}
+
+div#main-intro2 h2 {
+	font-family:'permiansanstypefaceregular';
+}
+
+div#main-intro h3 {
+	color: rgb(35,156,182);
+	font-family:'permiansanstypefaceregular';
+	font-size: 25px;
+}
+.time-date {
+	line-height: 1.15;
+}
+#main-home .time-date {
+	margin:0;
+}
+
+.test-border0 {
+	border: 1px solid red;
+}
+.test-border1 {
+	border: 1px solid orange;
+}
+.test-border2 {
+	border: 1px solid green;
+}
+.test-border3 {
+	border: 1px solid blue;
+}
+.test-border4 {
+	border: 1px solid purple;
+}
+
+
 
 div.top-menu-spacing {
 	height: 51px;
@@ -25,12 +79,22 @@ input.short-input {
 
 #more-info-btn {
 	margin: 25px;
+	margin-top:-30px;
+	margin-left: 20px;
+	width: 150px;
+	height: 48px;
+	font-size: 24px;
+}
+
+.help-btn {
+	margin: 25px;
 	margin-top:0px;
 	width: 150px;
 	height: 48px;
 	font-size: 24px;
 	margin-left: 235px;
 }
+
 #mm-activities {
 	float: left;
 	padding: 10px;
@@ -40,38 +104,52 @@ input.short-input {
 .right-just {
 	text-align: right;
 }
+
 #help-section{
 	float: right;
 	clear: right;
 	margin:0;
 	padding:0;
-	margin-top:30px;
+//	margin-top:30px;
+//	margin-right: 20px;
+	border: 1px solid red;
 }
-
 #help-section h5{
 	margin-top: 20px;
 	float: right;
 	clear: right;
-	padding: 10px;
+	margin:0;
+	padding:0;
+	
+//	padding: 10px;
 	//border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 	text-align: right;
 	margin:0;
-	padding:0;
-	margin-right: 20px;
+//	padding:0;
+//	margin-right: 20px;
+	border: 1px solid green;
+}
+#main-home #secondary-panel {
+	margin-top: 15px;
+	border: 1px solid blue;
 }
 
 #help-section a{
 	float: right;
-	clear: right;
-	padding: 10px;
-	//border: 1px solid rgb(35,156,182);
+	clear: both;
+	padding:0;
+	margin:0;
+//	padding: 10px;
+	border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 	width: 180px;
-	text-align: right;
-	margin:5px;
-	margin-right: 20px;
+	//text-align: right;
+	//margin:5px;
+	//margin-right: 20px;
+	border: 1px solid blue;
 }
+
 #mm-steam {
 	float: left;
 	padding: 10px;
@@ -151,6 +229,10 @@ hr {
 	padding-top: 7px;
 	margin-bottom: 0;
 }
+.p-breathing-space {
+	padding-top: 15px;
+}
+
 
 .bottom-breathing-space {
 	margin-bottom: 40px;
@@ -166,8 +248,9 @@ hr {
 a {
 	color: #00B7FF;
 }
+
 h2 {
-	font-family: arial;
+	font-family:'permiansanstypefaceregular'
 	color: red;
 }
 
@@ -202,11 +285,23 @@ h2 {
 	margin-top: 0em;
 	margin-bottom: 1em;
 }
+/*
 #makers-main-container a {
 	float: left;
 	clear: both;
 	font-size: 18px;
 }
+*/
+a.inline-anchor {
+	font-family:'permiansanstypefaceregular'
+}
+/*
+#makers-main-container #larrys-email {
+	font-family:'permiansanstypefaceregular';
+	color: red;
+}
+*/
+
 #maker-signup-container {
 	background-color:#white;
 }
@@ -230,15 +325,15 @@ h3 {
 	font-family:'permiansanstypefaceregular'
 }
 #in-my-div h3 {
-    font-family: 'robotoregular';
+	font-family:'permiansanstypefaceregular';
 	color: red;
 }
 #in-my-div h3.test1 {
-    font-family: 'robotoregular';
+	font-family:'permiansanstypefaceregular';
 	color: blue;
 }
 #in-my-div h3.test2 {
-    font-family: 'times';
+	font-family:'permiansanstypefaceregular';
 	color: green;
 }
 
