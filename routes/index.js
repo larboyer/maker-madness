@@ -228,6 +228,9 @@ router.get('/pong', function(req, res, next) {
 	res.sendFile(__dirname + '/pong.html');
 });
 
+router.get('/pong2', function(req, res, next) {
+	res.sendFile(__dirname + '/pong2.html');
+});
 /*
 router.get('/docs_test', function(req, res, next) {
 	res.render('docs_test', { 
