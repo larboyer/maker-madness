@@ -117,13 +117,13 @@
 					// Paddle's position
 					this.x = W/2 - this.w/2;
 					//this.y = (pos == "top") ? 0 : H - this.h;
-					this.y = (pos == "top") ? 0 : H - this.h - 25;
-					
+					//this.y = (pos == "top") ? 0 : H - this.h - 25;
+					this.y = H - this.h;
 				}
 				
 				// Push two new paddles into the paddles[] array
 				paddles.push(new Paddle("bottom"));
-				paddles.push(new Paddle("top"));
+				//paddles.push(new Paddle("top"));
 				
 				// Ball object
 				ball = {
@@ -256,7 +256,8 @@
 				
 				// Move the paddles on mouse move
 				if(mouse.x && mouse.y) {
-					for(var i = 1; i < paddles.length; i++) {
+					//for(var i = 1; i < paddles.length; i++) {
+					for(var i = 0; i < paddles.length; i++) {
 						p = paddles[i];
 						p.x = mouse.x - p.w/2;
 					}		
@@ -268,18 +269,21 @@
 				
 				// Collision with paddles
 				p1 = paddles[1];
-				p2 = paddles[2];
-				
+				//p2 = paddles[2];
+				//p0 = paddles[0];
+	
 				// If the ball strikes with paddles,
 				// invert the y-velocity vector of ball,
 				// increment the points, play the collision sound,
 				// save collision's position so that sparks can be
 				// emitted from that position, set the flag variable,
 				// and change the multiplier
+				//if(collides(ball, p0)) {
+				//	collideAction(ball, p0);
 				if(collides(ball, p1)) {
 					collideAction(ball, p1);
-				} else if(collides(ball, p2)) {
-					collideAction(ball, p2);
+				//} else if(collides(ball, p2)) {
+				//	collideAction(ball, p2);
 				} else {
 					// Collide with walls, If the ball hits the top/bottom,
 					// walls, run gameOver() function
@@ -334,11 +338,13 @@
 				if(b.x + ball.r >= p.x && b.x - ball.r <=p.x + p.w) {
 					if(b.y >= (p.y - p.h) && p.y > 0){
 						paddleHit = 1;
+						console.log("sss");
 						return true;
 					}
 					
 					else if(b.y <= p.h && p.y == 0) {
 						paddleHit = 2;
+						console.log("ttt");
 						return true;
 					}
 					
