@@ -24,24 +24,6 @@
 		</style>
 		<script>
 			function init_app() {
-				//-------- Touch on Mobile -----------------------------
-				/*
-				var obj2 = document.getElementById('canvas');
-				obj2.addEventListener('touchmove', function(event) {
-					// If there's exactly one finger inside this element
-					if (event.targetTouches.length == 1) {
-						var touch = event.targetTouches[0];
-						// Place element where the finger is
-						obj2.style.left = touch.pageX + 'px';
-						obj2.style.top = touch.pageY + 'px';
-						console.log("111");
-					}
-				}, false);
-
-				obj2.addEventListener('touchmove', function(event) {
-					event.preventDefault();
-				}, false); 
-				*/
 
 				// RequestAnimFrame: a browser API for getting smooth animations
 				window.requestAnimFrame = (function(){
@@ -68,8 +50,8 @@
 				var canvas = document.getElementById("canvas"),
 						ctx = canvas.getContext("2d"), // Create canvas context
 						W = window.innerWidth, // Window's width
-						//H = window.innerHeight, // Window's height
-						H = window.innerHeight - 50, // Window's height
+						H = window.innerHeight, // Window's height
+						//H = window.innerHeight - 50, // Window's height
 						particles = [], // Array containing particles
 						ball = {}, // Ball object
 						//paddles = [2], // Array containing two paddles
@@ -93,6 +75,11 @@
 				
 				canvas.addEventListener("mousemove", trackPosition, true);
 				canvas.addEventListener("touchmove", touchPosition, true);
+			
+				// This prevents the phone from scrolling.	
+				document.body.addEventListener('touchmove', function(event) {
+					event.preventDefault();
+				}, false); 	
 
 				// Initialise the collision sound
 				collision = document.getElementById("collide");
@@ -111,7 +98,8 @@
 				function Paddle(pos) {
 					// Height and width
 					//this.h = 5;
-					this.h = 25;
+					//this.h = 25;
+					this.h = 35;
 					this.w = 150;
 					
 					// Paddle's position
@@ -141,9 +129,7 @@
 					ctx.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
 					ctx.fill();
 				}
-
 			};
-			
 			
 			// Start Button object
 			startBtn = {
@@ -220,31 +206,30 @@
 				}
 			}
 			
+			/*
 			function updateDiag( text ) {
-				//console.log("Updating diag-text:" + text );
-				//document.getElementById("diag-text").value = text;
 				var p_elem = document.getElementById("diag-text");
 				if( p_elem ) {
-					console.log("Got it");
 					p_elem.innerHTML = text;
 				} 
 			}					
+			*/
 			
 			// Track the position of mouse cursor
-			var frame_num = 0;
+			//var frame_num = 0;
 			function trackPosition(e) {
 				mouse.x = e.pageX;
 				mouse.y = e.pageY;
-				var str = "Diag 1000; x:" + e.pageX;
-				updateDiag( str );	
-				++frame_num;
+				//var str = "Diag 1000; x:" + e.pageX;
+				//updateDiag( str );	
+				//++frame_num;
 			}
 			
 			function touchPosition(e) {
 				mouse.x = e.pageX;
 				mouse.y = e.pageY;
-				var str = "Diag 1001; x:" + e.pageX;
-				updateDiag( str );	
+				//var str = "Diag 1001; x:" + e.pageX;
+				//updateDiag( str );	
 			}
 			
 			// Function to update positions, score and everything.
@@ -298,10 +283,8 @@
 					} 
 
 					else if(ball.y < 0) {
-						//console.log("TTTTT");
 						//ball.y = ball.r;
 						//gameOver();
-						//console.log("TTTTT");
 						ball.vy = -ball.vy;
 					}
 					
@@ -335,16 +318,16 @@
 			//Function to check collision between ball and one of
 			//the paddles
 			function collides(b, p) {
-				if(b.x + ball.r >= p.x && b.x - ball.r <=p.x + p.w) {
-					if(b.y >= (p.y - p.h) && p.y > 0){
+				if(b.x + ball.r >= p.x && 
+					b.x - ball.r <=p.x + p.w) 
+				{
+					if(b.y >= (p.y) && p.y > 0){
 						paddleHit = 1;
-						console.log("sss");
 						return true;
 					}
 					
 					else if(b.y <= p.h && p.y == 0) {
 						paddleHit = 2;
-						console.log("ttt");
 						return true;
 					}
 					
@@ -357,7 +340,7 @@
 				ball.vy = -ball.vy;
 				
 				if(paddleHit == 1) {
-					ball.y = p.y - p.h;
+					//ball.y = p.y - p.h;
 					particlePos.y = ball.y + ball.r;
 					multiplier = -1;	
 				}
@@ -420,7 +403,6 @@
 				ctx.textAlign = "center";
 				ctx.textBaseline = "middle";
 				ctx.fillText("Game Over - You scored "+points+" points!", W/2, H/2 + 25 );
-				
 				// Stop the Animation
 				cancelRequestAnimFrame(init);
 				
@@ -507,7 +489,6 @@
 			startScreen();
 		}
 			
-			
 
 		</script>
 	</head>
@@ -516,7 +497,9 @@
 		<h4>ViMP - Viral Mobile Pong</h3>	
 		-->
 		<canvas id="canvas" width="2000"; height="2000"></canvas>
+		<!--
 		<p id="diag-text" >Here is it</p>
+		-->
 		<audio preload="true" id="collide">
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.mp3" />
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.wav" />
