@@ -22,7 +22,7 @@
 		</style>
 		<script>
 
-			function init_app() {
+			// Boyer here; count bug due to hitting side of paddle.
 			var slogans = [
 				"Come design your own Pong game",
 				"Tell your Friends",
@@ -34,6 +34,10 @@
 				"Build with Electronics"
 			];
 			var curSloganNo = 0;
+			var curPoints = 0;
+			var maxPoints = 0;
+
+			function init_app() {
 
 				// RequestAnimFrame: a browser API for getting smooth animations
 				window.requestAnimFrame = (function(){
@@ -67,9 +71,10 @@
 					//paddles = [2], // Array containing two paddles
 					paddles = [1], // Array containing two paddles
 					mouse = {}, // Mouse object to store it's current position
-					points = 0, // Varialbe to store points
+					//points = 0, // Varialbe to store points
 					// Boyer here; put in high score functionality. 
-					high_score = 0, // Varialbe to store points
+					//high_score = 0, // Varialbe to store points
+					//high_score = 0, // Varialbe to store points
 					fps = 60, // Max FPS (frames per second)
 					particlesCount = 20, // Number of sparks when ball strikes the paddle
 					flag = 0, // Flag variable which is changed on collision
@@ -185,7 +190,7 @@
 			};
 		
 			var AD_HEIGHT = 120;
-			var AD_WIDTH = 370;	
+			var AD_WIDTH = 350;	
 			var AD_Y_OFFSET = 15;
 			var AD_TEXT_OFFSET = 37;
 			var AD_LINE_SPACING = 20;
@@ -197,14 +202,20 @@
 				
 				draw: function() {
 					ctx.strokeStyle = "yellow";
+					ctx.strokeStyle = '#FF9700'
 					ctx.lineWidth = "6";
 					ctx.strokeRect(this.x, this.y, this.w, this.h);
 
-					ctx.strokeStyle = "orange";
+					//ctx.strokeStyle = "orange";
+					// purple
+					//ctx.strokeStyle = '#C240B6';
+					// blue
+					ctx.strokeStyle = '#349CB6';
 					ctx.lineWidth = "6";
 					ctx.strokeRect(this.x-6, this.y-6, this.w+12, this.h+12);
 
-					ctx.strokeStyle = "red";
+					//ctx.strokeStyle = "red";
+					ctx.strokeStyle = '#E30611';
 					ctx.lineWidth = "6";
 					ctx.strokeRect(this.x-12, this.y-12, this.w+24, this.h+24);
 
@@ -327,7 +338,8 @@
 
 			// Function to increase speed after every 5 points
 			function increaseSpd() {
-				if(points % 4 == 0) {
+				//if(points % 4 == 0) {
+				if(curPoints % 4 == 0) {
 					if(Math.abs(ball.vx) < 15) {
 						ball.vx += (ball.vx < 0) ? -1 : 1;
 						ball.vy += (ball.vy < 0) ? -2 : 2;
@@ -345,20 +357,14 @@
 			*/
 			
 			// Track the position of mouse cursor
-			//var frame_num = 0;
 			function trackPosition(e) {
 				mouse.x = e.pageX;
 				mouse.y = e.pageY;
-				//var str = "Diag 1000; x:" + e.pageX;
-				//updateDiag( str );	
-				//++frame_num;
 			}
 			
 			function touchPosition(e) {
 				mouse.x = e.pageX;
 				mouse.y = e.pageY;
-				//var str = "Diag 1001; x:" + e.pageX;
-				//updateDiag( str );	
 			}
 			
 			// Function to update positions, score and everything.
@@ -366,7 +372,8 @@
 			function update() {
 				
 				// Update scores
-				updateScore(); 
+				//updateScore(points); 
+				updateScore(curPoints, maxPoints); 
 				
 				// Move the paddles on mouse move
 				if(mouse.x && mouse.y) {
@@ -381,10 +388,8 @@
 				ball.x += ball.vx;
 				ball.y += ball.vy;
 				
-				// Collision with paddles
+				// Collision with paddle
 				p1 = paddles[1];
-				//p2 = paddles[2];
-				//p0 = paddles[0];
 	
 				// If the ball strikes with paddles,
 				// invert the y-velocity vector of ball,
@@ -392,12 +397,8 @@
 				// save collision's position so that sparks can be
 				// emitted from that position, set the flag variable,
 				// and change the multiplier
-				//if(collides(ball, p0)) {
-				//	collideAction(ball, p0);
 				if(collides(ball, p1)) {
 					collideAction(ball, p1);
-				//} else if(collides(ball, p2)) {
-				//	collideAction(ball, p2);
 				} else {
 					// Collide with walls, If the ball hits the top/bottom,
 					// walls, run gameOver() function
@@ -411,6 +412,7 @@
 						//ball.y = H - ball.r;
 					} 
 
+					// Ball hits top of screen.
 					else if(ball.y < 0) {
 						//ball.y = ball.r;
 						//gameOver();
@@ -480,13 +482,15 @@
 					multiplier = 1;	
 				}
 				
-				points++;
+				//points++;
+				++curPoints;
 				increaseSpd();
 				
 				if(collision) {
-					if(points > 0) 
+					//if(points > 0) 
+					if(curPoints > 0) {
 						collision.pause();
-					
+					}	
 					collision.currentTime = 0;
 					collision.play();
 				}
@@ -517,12 +521,13 @@
 			}
 			
 			// Function for updating score
-			function updateScore() {
+			function updateScore(cur_points, max_points) {
 				ctx.fillStlye = "white";
 				ctx.font = "16px Arial, sans-serif";
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText("Score: " + points, 20, 20 );
+				ctx.fillText("Cur Score: " + cur_points, 20, 20 );
+				ctx.fillText("Max Score: " + max_points, 20, 40 );
 			}
 			
 			// Function to run when the game overs
@@ -531,7 +536,7 @@
 				ctx.font = "20px Arial, sans-serif";
 				ctx.textAlign = "center";
 				ctx.textBaseline = "middle";
-				ctx.fillText("Game Over - You scored "+points+" points!", W/2, H/2 + 25 );
+				ctx.fillText("Game Over - You scored " + curPoints + " points!", W/2, H/2 + 25 );
 				// Stop the Animation
 				cancelRequestAnimFrame(init);
 				
@@ -577,6 +582,10 @@
 						ball.x = 20;
 						ball.y = 20;
 						points = 0;
+						if( curPoints > maxPoints ) {
+							maxPoints = curPoints;
+						}
+						curPoints = 0;
 						ball.vx = 4;
 						ball.vy = 8;
 						animloop();
@@ -619,7 +628,6 @@
 			// Show the start screen
 			startScreen();
 		}
-			
 
 		</script>
 	</head>
@@ -638,6 +646,4 @@
 
 	</body>
 </html>
-
-
 

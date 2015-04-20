@@ -192,7 +192,6 @@ h4#mm-steam{
 	float: left;
 	//padding: 10px;
 	//padding-left: 30px;
-//	border: 1px solid blue;
 	//color:red;
 	//margin-left:30px;
 }
@@ -222,19 +221,24 @@ ul li {
 	color: #555;
 }
 .mm-red {
-	color: rgb(227,6,17);
+	//color: rgb(227,6,17);
+	color: #E30611;
 }
 .mm-blue {
-	color: rgb(35,156,182);
+	//color: rgb(35,156,182);
+	color: #349CB6	
 }
 .mm-purple {
-	color: rgb(194,64,254);
+	//color: rgb(194,64,254);
+	color: #C240B6
 }
 .mm-yellow {
-	color: rgb(255,151,0);
+	//color: rgb(255,151,0);
+	color: #FF9700
 }
 .mm-green {
 	color: rgb(77,170,41);
+	color: #4DAA29
 }
 
 
