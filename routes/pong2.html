@@ -18,12 +18,22 @@
 			}
 			canvas {
 				background-color: #ddd;
-				//width: 200px;
-				//height: 200px;
 			}
 		</style>
 		<script>
+
 			function init_app() {
+			var slogans = [
+				"Come design your own Pong game",
+				"Tell your Friends",
+				"Play with Robots",
+				"Build Things",
+				"Tell your Parents",
+				"Ride a LeafBlower Hovercraft",
+				"Learn to Knit",
+				"Build with Electronics"
+			];
+			var curSloganNo = 0;
 
 				// RequestAnimFrame: a browser API for getting smooth animations
 				window.requestAnimFrame = (function(){
@@ -48,26 +58,29 @@
 
 				// Initialize canvas and required variables
 				var canvas = document.getElementById("canvas"),
-						ctx = canvas.getContext("2d"), // Create canvas context
-						W = window.innerWidth, // Window's width
-						H = window.innerHeight, // Window's height
-						//H = window.innerHeight - 50, // Window's height
-						particles = [], // Array containing particles
-						ball = {}, // Ball object
-						//paddles = [2], // Array containing two paddles
-						paddles = [1], // Array containing two paddles
-						mouse = {}, // Mouse object to store it's current position
-						points = 0, // Varialbe to store points
-						fps = 60, // Max FPS (frames per second)
-						particlesCount = 20, // Number of sparks when ball strikes the paddle
-						flag = 0, // Flag variable which is changed on collision
-						particlePos = {}, // Object to contain the position of collision 
-						multipler = 1, // Varialbe to control the direction of sparks
-						startBtn = {}, // Start button object
-						restartBtn = {}, // Restart button object
-						over = 0, // flag varialbe, cahnged when the game is over
-						init, // variable to initialize animation
-						paddleHit;
+					ctx = canvas.getContext("2d"), // Create canvas context
+					W = window.innerWidth, // Window's width
+					H = window.innerHeight, // Window's height
+					//H = window.innerHeight - 50, // Window's height
+					particles = [], // Array containing particles
+					ball = {}, // Ball object
+					//paddles = [2], // Array containing two paddles
+					paddles = [1], // Array containing two paddles
+					mouse = {}, // Mouse object to store it's current position
+					points = 0, // Varialbe to store points
+					// Boyer here; put in high score functionality. 
+					high_score = 0, // Varialbe to store points
+					fps = 60, // Max FPS (frames per second)
+					particlesCount = 20, // Number of sparks when ball strikes the paddle
+					flag = 0, // Flag variable which is changed on collision
+					particlePos = {}, // Object to contain the position of collision 
+					multipler = 1, // Varialbe to control the direction of sparks
+					startBtn = {}, // Start button object
+					restartBtn = {}, // Restart button object
+					mmAdvertisement = {},
+					over = 0, // flag varialbe, cahnged when the game is over
+					init, // variable to initialize animation
+					paddleHit;
 				
 				// Add mousemove and mousedown events to the canvas
 				canvas.addEventListener("mousedown", btnClick, true);
@@ -96,16 +109,12 @@
 				
 				// Function for creating paddles
 				function Paddle(pos) {
-					// Height and width
-					//this.h = 5;
-					//this.h = 25;
+					// Paddle height and width
 					this.h = 35;
 					this.w = 150;
 					
 					// Paddle's position
 					this.x = W/2 - this.w/2;
-					//this.y = (pos == "top") ? 0 : H - this.h;
-					//this.y = (pos == "top") ? 0 : H - this.h - 25;
 					this.y = H - this.h;
 				}
 				
@@ -115,12 +124,16 @@
 				
 				// Ball object
 				ball = {
-					x: 50,
-					y: 50, 
+					//x: 50,
+					x: W/2,
+					//y: 50, 
+					y: H-50, 
 					r: 5,
 					c: "white",
+					//vx: 4,
+					//vy: 8,
 					vx: 4,
-					vy: 8,
+					vy: -8,
 					
 				// Function for drawing ball on canvas
 				draw: function() {
@@ -147,7 +160,7 @@
 					ctx.textAlign = "center";
 					ctx.textBaseline = "middle";
 					ctx.fillStlye = "white";
-					ctx.fillText("Start", W/2, H/2 );
+					ctx.fillText("Start  >", W/2, H/2 );
 				}
 			};
 			
@@ -167,10 +180,126 @@
 					ctx.textAlign = "center";
 					ctx.textBaseline = "middle";
 					ctx.fillStlye = "white";
-					ctx.fillText("Restart", W/2, H/2 - 25 );
+					ctx.fillText("Restart >", W/2, H/2 - 25 );
 				}
 			};
-			
+		
+			var AD_HEIGHT = 120;
+			var AD_WIDTH = 370;	
+			var AD_Y_OFFSET = 15;
+			var AD_TEXT_OFFSET = 37;
+			var AD_LINE_SPACING = 20;
+			mmAdvertisement = {
+				w: AD_WIDTH,
+				h: AD_HEIGHT,
+				x: W/2 - (1/2 * AD_WIDTH),
+				y: AD_Y_OFFSET,
+				
+				draw: function() {
+					ctx.strokeStyle = "yellow";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+					ctx.strokeStyle = "orange";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-6, this.y-6, this.w+12, this.h+12);
+
+					ctx.strokeStyle = "red";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-12, this.y-12, this.w+24, this.h+24);
+
+					var y_offset = AD_TEXT_OFFSET;					
+					ctx.font = "18px Arial, sans-serif";
+					ctx.textAlign = "center";
+					ctx.textBaseline = "middle";
+
+					ctx.fillStlye = "purple";
+					ctx.strokeStyle = "blue";
+					ctx.fillText("Only 8 Days Until...", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "red";
+					ctx.strokeStyle = "red";
+					ctx.fillText("Maker Madness @ Columbia High School", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText("Saturday, May 2nd, 10-4", W/2, y_offset );
+					y_offset += AD_LINE_SPACING + 15;
+
+					ctx.font = "22px Arial, sans-serif";
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText( slogans[curSloganNo], W/2, y_offset );
+					++curSloganNo;
+					if(curSloganNo >= slogans.length) {
+						curSloganNo = 0;
+					}
+				}		
+			};
+
+			var AD_HEIGHT = 120;
+			var AD_WIDTH = 370;	
+			var AD_Y_OFFSET = 15;
+			var AD_TEXT_OFFSET = 37;
+			var AD_LINE_SPACING = 20;
+
+			mmLeaderboard = {
+				w: AD_WIDTH,
+				h: AD_HEIGHT,
+				x: W/2 - (1/2 * AD_WIDTH),
+				y: AD_Y_OFFSET,
+				
+				draw: function() {
+					ctx.strokeStyle = "green";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+					ctx.strokeStyle = "blue";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-6, this.y-6, this.w+12, this.h+12);
+
+					/*
+					ctx.strokeStyle = "red";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-12, this.y-12, this.w+24, this.h+24);
+					*/
+
+					var y_offset = AD_TEXT_OFFSET;					
+					ctx.font = "18px Arial, sans-serif";
+					ctx.textAlign = "center";
+					ctx.textBaseline = "middle";
+
+					ctx.fillStlye = "purple";
+					ctx.strokeStyle = "blue";
+					ctx.fillText("Your High Score: 23", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "red";
+					ctx.strokeStyle = "red";
+					ctx.fillText("Maker Madness @ Columbia High School", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText("Saturday, May 2nd, 10-4", W/2, y_offset );
+					y_offset += AD_LINE_SPACING + 15;
+
+					ctx.font = "22px Arial, sans-serif";
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText( slogans[curSloganNo], W/2, y_offset );
+					++curSloganNo;
+					if(curSloganNo >= slogans.length) {
+						curSloganNo = 0;
+					}
+				}		
+			};
+
+
+
+
 			// Function for creating particles object
 			function createParticles(x, y, m) {
 				this.x = x || 0;
@@ -411,6 +540,7 @@
 				
 				// Show the restart button
 				restartBtn.draw();
+				mmAdvertisement.draw();
 			}
 			
 			// Function for running the whole animation
@@ -423,6 +553,7 @@
 			function startScreen() {
 				draw();
 				startBtn.draw();
+				mmAdvertisement.draw();
 			}
 			
 			// On button click (Restart and start)
