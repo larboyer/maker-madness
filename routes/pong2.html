@@ -223,7 +223,12 @@
 
 					ctx.fillStlye = "purple";
 					ctx.strokeStyle = "blue";
-					ctx.fillText("Only 8 Days Until...", W/2, y_offset );
+
+					var days_left = daysTilMM();		
+
+
+
+					ctx.fillText("Only " + days_left + " Days Until...", W/2, y_offset );
 					y_offset += AD_LINE_SPACING;
 
 					ctx.fillStlye = "red";
@@ -529,8 +534,9 @@
 				ctx.font = "16px Arial, sans-serif";
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText("Cur Score: " + cur_points, 20, 20 );
-				ctx.fillText("Max Score: " + max_points, 20, 40 );
+				// Boyer temp; put these back in somewhere. 
+				//ctx.fillText("Cur Score: " + cur_points, 20, 20 );
+				//ctx.fillText("Max Score: " + max_points, 20, 40 );
 			}
 			
 			// Function to run when the game is over
@@ -633,6 +639,18 @@
 			
 			// Show the start screen
 			startScreen();
+		}
+
+		function daysTilMM() {
+			var oneDay = 24*60*60*1000;	
+			var today = new Date();
+			var faire_day = new Date("May, 02, 2015");
+			var dayCount = Math.round(Math.abs((faire_day.getTime() -
+				today.getTime())/(oneDay)));
+			if( dayCount < 0 ) {
+				dayCount = 0;
+			}
+			return(dayCount);
 		}
 
 		</script>
