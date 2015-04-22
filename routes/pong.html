@@ -18,12 +18,27 @@
 			}
 			canvas {
 				background-color: #ddd;
-				//width: 200px;
-				//height: 200px;
 			}
 		</style>
 		<script>
+
+			// Boyer here; count bug due to hitting side of paddle.
+			var slogans = [
+				"Come design your own Pong game",
+				"Tell your Friends",
+				"Play with Robots",
+				"Build Things",
+				"Tell your Parents",
+				"Ride a LeafBlower Hovercraft",
+				"Learn to Knit",
+				"Build with Electronics"
+			];
+			var curSloganNo = 0;
+			var curPoints = 0;
+			var maxPoints = 0;
+
 			function init_app() {
+
 				// RequestAnimFrame: a browser API for getting smooth animations
 				window.requestAnimFrame = (function(){
 					return  window.requestAnimationFrame       || 
@@ -47,28 +62,43 @@
 
 				// Initialize canvas and required variables
 				var canvas = document.getElementById("canvas"),
-						ctx = canvas.getContext("2d"), // Create canvas context
-						W = window.innerWidth, // Window's width
-						H = window.innerHeight, // Window's height
-						particles = [], // Array containing particles
-						ball = {}, // Ball object
-						paddles = [2], // Array containing two paddles
-						mouse = {}, // Mouse object to store it's current position
-						points = 0, // Varialbe to store points
-						fps = 60, // Max FPS (frames per second)
-						particlesCount = 20, // Number of sparks when ball strikes the paddle
-						flag = 0, // Flag variable which is changed on collision
-						particlePos = {}, // Object to contain the position of collision 
-						multipler = 1, // Varialbe to control the direction of sparks
-						startBtn = {}, // Start button object
-						restartBtn = {}, // Restart button object
-						over = 0, // flag varialbe, cahnged when the game is over
-						init, // variable to initialize animation
-						paddleHit;
+					ctx = canvas.getContext("2d"), // Create canvas context
+					W = window.innerWidth, // Window's width
+					H = window.innerHeight, // Window's height
+					//H = window.innerHeight - 50, // Window's height
+					particles = [], // Array containing particles
+					ball = {}, // Ball object
+					//paddles = [2], // Array containing two paddles
+					paddles = [1], // Array containing two paddles
+					mouse = {}, // Mouse object to store it's current position
+					//points = 0, // Varialbe to store points
+					// Boyer here; put in high score functionality. 
+					//high_score = 0, // Varialbe to store points
+					//high_score = 0, // Varialbe to store points
+					fps = 60, // Max FPS (frames per second)
+					particlesCount = 20, // Number of sparks when ball strikes the paddle
+					flag = 0, // Flag variable which is changed on collision
+					particlePos = {}, // Object to contain the position of collision 
+					multipler = 1, // Varialbe to control the direction of sparks
+					startBtn = {}, // Start button object
+					restartBtn = {}, // Restart button object
+					mmAdvertisement = {},
+					over = 0, // flag varialbe, cahnged when the game is over
+					ball_out_of_bounds = 0, 
+					init, // variable to initialize animation
+					paddleHit;
 				
 				// Add mousemove and mousedown events to the canvas
-				canvas.addEventListener("mousemove", trackPosition, true);
 				canvas.addEventListener("mousedown", btnClick, true);
+				canvas.addEventListener("touchenter", touchClick, true);
+				
+				canvas.addEventListener("mousemove", trackPosition, true);
+				canvas.addEventListener("touchmove", touchPosition, true);
+			
+				// This prevents the phone from scrolling.	
+				document.body.addEventListener('touchmove', function(event) {
+					event.preventDefault();
+				}, false); 	
 
 				// Initialise the collision sound
 				collision = document.getElementById("collide");
@@ -85,28 +115,27 @@
 				
 				// Function for creating paddles
 				function Paddle(pos) {
-					// Height and width
-					this.h = 5;
+					// Paddle height and width
+					this.h = 35;
 					this.w = 150;
 					
 					// Paddle's position
 					this.x = W/2 - this.w/2;
-					this.y = (pos == "top") ? 0 : H - this.h;
-					
+					this.y = H - this.h;
 				}
 				
-				// Push two new paddles into the paddles[] array
+				// Push one paddle onto the array for now. Not using 2nd.
 				paddles.push(new Paddle("bottom"));
-				paddles.push(new Paddle("top"));
+				//paddles.push(new Paddle("top"));
 				
 				// Ball object
 				ball = {
-					x: 50,
-					y: 50, 
+					x: W/2,
+					y: H-50, 
 					r: 5,
 					c: "white",
 					vx: 4,
-					vy: 8,
+					vy: -8,
 					
 				// Function for drawing ball on canvas
 				draw: function() {
@@ -116,7 +145,6 @@
 					ctx.fill();
 				}
 			};
-			
 			
 			// Start Button object
 			startBtn = {
@@ -134,7 +162,7 @@
 					ctx.textAlign = "center";
 					ctx.textBaseline = "middle";
 					ctx.fillStlye = "white";
-					ctx.fillText("Start", W/2, H/2 );
+					ctx.fillText("Start  >", W/2, H/2 );
 				}
 			};
 			
@@ -154,10 +182,135 @@
 					ctx.textAlign = "center";
 					ctx.textBaseline = "middle";
 					ctx.fillStlye = "white";
-					ctx.fillText("Restart", W/2, H/2 - 25 );
+					ctx.fillText("Restart >", W/2, H/2 - 25 );
 				}
 			};
-			
+		
+			var AD_HEIGHT = 120;
+			var AD_WIDTH = 350;	
+			var AD_Y_OFFSET = 15;
+			var AD_TEXT_OFFSET = 37;
+			var AD_LINE_SPACING = 20;
+			mmAdvertisement = {
+				w: AD_WIDTH,
+				h: AD_HEIGHT,
+				x: W/2 - (1/2 * AD_WIDTH),
+				y: AD_Y_OFFSET,
+				
+				draw: function() {
+					ctx.strokeStyle = "yellow";
+					ctx.strokeStyle = '#FF9700'
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+					//ctx.strokeStyle = "orange";
+					// purple
+					//ctx.strokeStyle = '#C240B6';
+					// blue
+					ctx.strokeStyle = '#349CB6';
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-6, this.y-6, this.w+12, this.h+12);
+
+					//ctx.strokeStyle = "red";
+					ctx.strokeStyle = '#E30611';
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-12, this.y-12, this.w+24, this.h+24);
+
+					var y_offset = AD_TEXT_OFFSET;					
+					ctx.font = "18px Arial, sans-serif";
+					ctx.textAlign = "center";
+					ctx.textBaseline = "middle";
+
+					ctx.fillStlye = "purple";
+					ctx.strokeStyle = "blue";
+
+					var days_left = daysTilMM();		
+
+
+
+					ctx.fillText("Only " + days_left + " Days Until...", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "red";
+					ctx.strokeStyle = "red";
+					ctx.fillText("Maker Madness @ Columbia High School", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText("Saturday, May 2nd, 10-4", W/2, y_offset );
+					y_offset += AD_LINE_SPACING + 15;
+
+					ctx.font = "22px Arial, sans-serif";
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText( slogans[curSloganNo], W/2, y_offset );
+					++curSloganNo;
+					if(curSloganNo >= slogans.length) {
+						curSloganNo = 0;
+					}
+				}		
+			};
+
+			var AD_HEIGHT = 120;
+			var AD_WIDTH = 370;	
+			var AD_Y_OFFSET = 15;
+			var AD_TEXT_OFFSET = 37;
+			var AD_LINE_SPACING = 20;
+
+			mmLeaderboard = {
+				w: AD_WIDTH,
+				h: AD_HEIGHT,
+				x: W/2 - (1/2 * AD_WIDTH),
+				y: AD_Y_OFFSET,
+				
+				draw: function() {
+					ctx.strokeStyle = "green";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+					ctx.strokeStyle = "blue";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-6, this.y-6, this.w+12, this.h+12);
+
+					/*
+					ctx.strokeStyle = "red";
+					ctx.lineWidth = "6";
+					ctx.strokeRect(this.x-12, this.y-12, this.w+24, this.h+24);
+					*/
+
+					var y_offset = AD_TEXT_OFFSET;					
+					ctx.font = "18px Arial, sans-serif";
+					ctx.textAlign = "center";
+					ctx.textBaseline = "middle";
+
+					ctx.fillStlye = "purple";
+					ctx.strokeStyle = "blue";
+					ctx.fillText("Your High Score: 23", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "red";
+					ctx.strokeStyle = "red";
+					ctx.fillText("Maker Madness @ Columbia High School", W/2, y_offset );
+					y_offset += AD_LINE_SPACING;
+
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText("Saturday, May 2nd, 10-4", W/2, y_offset );
+					y_offset += AD_LINE_SPACING + 15;
+
+					ctx.font = "22px Arial, sans-serif";
+					ctx.fillStlye = "green";
+					ctx.strokeStyle = "green";
+					ctx.fillText( slogans[curSloganNo], W/2, y_offset );
+					++curSloganNo;
+					if(curSloganNo >= slogans.length) {
+						curSloganNo = 0;
+					}
+				}		
+			};
+
+
 			// Function for creating particles object
 			function createParticles(x, y, m) {
 				this.x = x || 0;
@@ -185,7 +338,7 @@
 
 			// Function to increase speed after every 5 points
 			function increaseSpd() {
-				if(points % 4 == 0) {
+				if(curPoints % 4 == 0) {
 					if(Math.abs(ball.vx) < 15) {
 						ball.vx += (ball.vx < 0) ? -1 : 1;
 						ball.vy += (ball.vy < 0) ? -2 : 2;
@@ -193,8 +346,22 @@
 				}
 			}
 			
+			/*
+			function updateDiag( text ) {
+				var p_elem = document.getElementById("diag-text");
+				if( p_elem ) {
+					p_elem.innerHTML = text;
+				} 
+			}					
+			*/
+			
 			// Track the position of mouse cursor
 			function trackPosition(e) {
+				mouse.x = e.pageX;
+				mouse.y = e.pageY;
+			}
+			
+			function touchPosition(e) {
 				mouse.x = e.pageX;
 				mouse.y = e.pageY;
 			}
@@ -204,11 +371,15 @@
 			function update() {
 				
 				// Update scores
-				updateScore(); 
+				if( curPoints > maxPoints ) {
+					maxPoints = curPoints;
+				}
+
+				updateScore(curPoints, maxPoints); 
 				
 				// Move the paddles on mouse move
 				if(mouse.x && mouse.y) {
-					for(var i = 1; i < paddles.length; i++) {
+					for(var i = 0; i < paddles.length; i++) {
 						p = paddles[i];
 						p.x = mouse.x - p.w/2;
 					}		
@@ -218,75 +389,96 @@
 				ball.x += ball.vx;
 				ball.y += ball.vy;
 				
-				// Collision with paddles
+				// Collision with paddle
 				p1 = paddles[1];
-				p2 = paddles[2];
-				
-				// If the ball strikes with paddles,
-				// invert the y-velocity vector of ball,
-				// increment the points, play the collision sound,
-				// save collision's position so that sparks can be
-				// emitted from that position, set the flag variable,
-				// and change the multiplier
-				if(collides(ball, p1)) {
-					collideAction(ball, p1);
-				} else if(collides(ball, p2)) {
-					collideAction(ball, p2);
-				} else {
-					// Collide with walls, If the ball hits the top/bottom,
-					// walls, run gameOver() function
+
+				// Check for out of bounds. If it's already violated,
+				// let it keep going and even bounce off paddle side, but
+				// the game is over as soon as the ball is off the screen
+				if( ball_out_of_bounds ) {
 					if(ball.y + ball.r > H) {
+						// Really beyond screen
 						ball.y = H - ball.r;
 						gameOver();
-					} 
-					
-					else if(ball.y < 0) {
-						ball.y = ball.r;
-						gameOver();
+					} else {
+						// Not quite past screen. Let it keep going
+		
+						// Boyer here; extra touch
+						// If within paddle, bounce off side of panel.
+						if(ball.x + ball.r >= p.x && ball.x - ball.r <=p.x + p.w) {
+							// If so, reverse velocity
+							ball.vx = -ball.vx;
+						}	
 					}
-					
-					// If ball strikes the vertical walls, invert the 
-					// x-velocity vector of ball
-					if(ball.x + ball.r > W) {
-						ball.vx = -ball.vx;
-						ball.x = W - ball.r;
+				} else {
+					// If the ball strikes with paddles,
+					// invert the y-velocity vector of ball,
+					// increment the points, play the collision sound,
+					// save collision's position so that sparks can be
+					// emitted from that position, set the flag variable,
+					// and change the multiplier
+					if(collides(ball, p1)) {
+						collideAction(ball, p1);
+					} else {
+						// Collide with walls, If the ball hits the top/bottom,
+						// walls, run gameOver() function
+						
+						// Ball hits bottom of screen
+						if(ball.y + ball.r > H) {
+							ball.y = H - ball.r;
+							gameOver();
+						} 
+	
+						// Ball hits top of screen. Just bounce
+						else if(ball.y < 0) {
+							ball.vy = -ball.vy;
+						}
+						
+						// If ball strikes the vertical walls, invert the 
+						// x-velocity vector of ball
+						if(ball.x + ball.r > W) {
+							ball.vx = -ball.vx;
+							ball.x = W - ball.r;
+						}
+						
+						else if(ball.x -ball.r < 0) {
+							ball.vx = -ball.vx;
+							ball.x = ball.r;
+						}
 					}
+				
+					// If flag is set, push the particles
+					if(flag == 1) { 
+						for(var k = 0; k < particlesCount; k++) {
+							particles.push(new createParticles(particlePos.x, particlePos.y, multiplier));
+						}
+					}	
 					
-					else if(ball.x -ball.r < 0) {
-						ball.vx = -ball.vx;
-						ball.x = ball.r;
-					}
+					// Emit particles/sparks
+					emitParticles();
+					
+					// reset flag
+					flag = 0;
 				}
-				
-				// If flag is set, push the particles
-				if(flag == 1) { 
-					for(var k = 0; k < particlesCount; k++) {
-						particles.push(new createParticles(particlePos.x, particlePos.y, multiplier));
-					}
-				}	
-				
-				// Emit particles/sparks
-				emitParticles();
-				
-				// reset flag
-				flag = 0;
 			}
 			
-			//Function to check collision between ball and one of
-			//the paddles
+			//Function to check collision between ball and paddle
 			function collides(b, p) {
-				if(b.x + ball.r >= p.x && b.x - ball.r <=p.x + p.w) {
-					if(b.y >= (p.y - p.h) && p.y > 0){
+
+				// If beyond the paddle's top surface
+				if(b.y >= (p.y) && p.y > 0) {
+					// If within paddle
+					if(b.x + ball.r >= p.x && b.x - ball.r <=p.x + p.w) 
+					{
+						// Bounce off top of paddle
 						paddleHit = 1;
 						return true;
+					} else { 
+						// Player looses. But just watch for bounce off paddle.
+						ball_out_of_bounds = 1;
 					}
-					
-					else if(b.y <= p.h && p.y == 0) {
-						paddleHit = 2;
-						return true;
-					}
-					
-					else return false;
+				} else {
+					return false;
 				}
 			}
 			
@@ -295,24 +487,18 @@
 				ball.vy = -ball.vy;
 				
 				if(paddleHit == 1) {
-					ball.y = p.y - p.h;
+					//ball.y = p.y - p.h;
 					particlePos.y = ball.y + ball.r;
 					multiplier = -1;	
 				}
-				
-				else if(paddleHit == 2) {
-					ball.y = p.h + ball.r;
-					particlePos.y = ball.y - ball.r;
-					multiplier = 1;	
-				}
-				
-				points++;
+
+				++curPoints;
 				increaseSpd();
 				
 				if(collision) {
-					if(points > 0) 
+					if(curPoints > 0) {
 						collision.pause();
-					
+					}	
 					collision.currentTime = 0;
 					collision.play();
 				}
@@ -343,22 +529,23 @@
 			}
 			
 			// Function for updating score
-			function updateScore() {
+			function updateScore(cur_points, max_points) {
 				ctx.fillStlye = "white";
 				ctx.font = "16px Arial, sans-serif";
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText("Score: " + points, 20, 20 );
+				// Boyer temp; put these back in somewhere. 
+				//ctx.fillText("Cur Score: " + cur_points, 20, 20 );
+				//ctx.fillText("Max Score: " + max_points, 20, 40 );
 			}
 			
-			// Function to run when the game overs
+			// Function to run when the game is over
 			function gameOver() {
 				ctx.fillStlye = "white";
 				ctx.font = "20px Arial, sans-serif";
 				ctx.textAlign = "center";
 				ctx.textBaseline = "middle";
-				ctx.fillText("Game Over - You scored "+points+" points!", W/2, H/2 + 25 );
-				
+				ctx.fillText("Game Over - You scored " + curPoints + " points!", W/2, H/2 + 25 );
 				// Stop the Animation
 				cancelRequestAnimFrame(init);
 				
@@ -367,6 +554,7 @@
 				
 				// Show the restart button
 				restartBtn.draw();
+				mmAdvertisement.draw();
 			}
 			
 			// Function for running the whole animation
@@ -379,6 +567,7 @@
 			function startScreen() {
 				draw();
 				startBtn.draw();
+				mmAdvertisement.draw();
 			}
 			
 			// On button click (Restart and start)
@@ -387,6 +576,43 @@
 				// Variables for storing mouse position on click
 				var mx = e.pageX,
 						my = e.pageY;
+				
+				// Click start button
+				if(mx >= startBtn.x && mx <= startBtn.x + startBtn.w) {
+					animloop();
+					
+					// Delete the start button after clicking it
+					startBtn = {};
+				}
+				
+				// If the game is over, and the restart button is clicked
+				if(over == 1) {
+					if(mx >= restartBtn.x && mx <= restartBtn.x + restartBtn.w) {
+						// Resetting game. 
+						ball.x = 20;
+						ball.y = 20;
+						points = 0;
+						if( curPoints > maxPoints ) {
+							maxPoints = curPoints;
+						}
+						curPoints = 0;
+						ball.vx = 4;
+						ball.vy = 8;
+						animloop();
+					
+						// Boyer here	
+						over = 0;
+						ball_out_of_bounds = 0; 
+					}
+				}
+			}
+			
+			// On touch click (Restart and start)
+			function touchClick(e) {
+				
+				// Variables for storing mouse position on click
+				var mx = e.pageX,
+					my = e.pageY;
 				
 				// Click start button
 				if(mx >= startBtn.x && mx <= startBtn.x + startBtn.w) {
@@ -414,8 +640,18 @@
 			// Show the start screen
 			startScreen();
 		}
-			
-			
+
+		function daysTilMM() {
+			var oneDay = 24*60*60*1000;	
+			var today = new Date();
+			var faire_day = new Date("May, 02, 2015");
+			var dayCount = Math.round(Math.abs((faire_day.getTime() -
+				today.getTime())/(oneDay)));
+			if( dayCount < 0 ) {
+				dayCount = 0;
+			}
+			return(dayCount);
+		}
 
 		</script>
 	</head>
@@ -424,6 +660,9 @@
 		<h4>ViMP - Viral Mobile Pong</h3>	
 		-->
 		<canvas id="canvas" width="2000"; height="2000"></canvas>
+		<!--
+		<p id="diag-text" >Here is it</p>
+		-->
 		<audio preload="true" id="collide">
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.mp3" />
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.wav" />
@@ -431,6 +670,4 @@
 
 	</body>
 </html>
-
-
 
