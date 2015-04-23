@@ -94,7 +94,7 @@
 				
 				canvas.addEventListener("mousemove", trackPosition, true);
 				canvas.addEventListener("touchmove", touchPosition, true);
-			
+		
 				// This prevents the phone from scrolling.	
 				document.body.addEventListener('touchmove', function(event) {
 					event.preventDefault();
@@ -613,7 +613,11 @@
 			
 			// On touch click (Restart and start)
 			function touchClick(e) {
-				
+				// Boyer here; adding for Android
+				if( navigator.userAgent.match(/Android/i) ) {
+					e.preventDefault();
+				}
+	
 				// Variables for storing mouse position on click
 				var mx = e.pageX,
 					my = e.pageY;
