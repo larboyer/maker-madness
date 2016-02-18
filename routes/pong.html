@@ -18,6 +18,8 @@
 			}
 			canvas {
 				background-color: #ddd;
+				//  Boyer temp
+				height: 10px;
 			}
 		</style>
 		<script>
@@ -64,7 +66,9 @@
 				var canvas = document.getElementById("canvas"),
 					ctx = canvas.getContext("2d"), // Create canvas context
 					W = window.innerWidth, // Window's width
-					H = window.innerHeight, // Window's height
+					// Boyer temp
+					//H = window.innerHeight, // Window's height
+					H = window.innerHeight - 50, // Window's height
 					//H = window.innerHeight - 50, // Window's height
 					particles = [], // Array containing particles
 					ball = {}, // Ball object
@@ -87,16 +91,18 @@
 					ball_out_of_bounds = 0, 
 					init, // variable to initialize animation
 					paddleHit;
-				
 				// Add mousemove and mousedown events to the canvas
 				canvas.addEventListener("mousedown", btnClick, true);
 				canvas.addEventListener("touchenter", touchClick, true);
 				
-				canvas.addEventListener("mousemove", trackPosition, true);
-				canvas.addEventListener("touchmove", touchPosition, true);
+				canvas.addEventListener("mousemove", btnMove, true);
+				canvas.addEventListener("touchmove", touchMove, true);
 		
 				// This prevents the phone from scrolling.	
 				document.body.addEventListener('touchmove', function(event) {
+					event.preventDefault();
+				}, false); 	
+				document.body.addEventListener('touchenter', function(event) {
 					event.preventDefault();
 				}, false); 	
 
@@ -346,24 +352,36 @@
 				}
 			}
 			
-			/*
 			function updateDiag( text ) {
 				var p_elem = document.getElementById("diag-text");
 				if( p_elem ) {
 					p_elem.innerHTML = text;
 				} 
 			}					
-			*/
 			
 			// Track the position of mouse cursor
-			function trackPosition(e) {
-				mouse.x = e.pageX;
-				mouse.y = e.pageY;
+			function btnMove(e) {
+				updateDiag( 'hey' );
+				console.log(e);
+				//mouse.x = e.pageX;
+				//mouse.y = e.pageY;
+				mouse.x = e.x;
+				mouse.y = e.y;
 			}
-			
-			function touchPosition(e) {
-				mouse.x = e.pageX;
-				mouse.y = e.pageY;
+	
+			var move_str_index = 0;	
+			var move_str = '0';	
+			function touchMove(e) {
+				if( navigator.userAgent.match(/Android/i) ) {
+					e.preventDefault();
+				}
+				move_str_index++;
+				move_str += ' x:' + e.x;
+				updateDiag( move_str );
+				//mouse.x = e.pageX;
+				//mouse.y = e.pageY;
+				mouse.x = e.x;
+				mouse.y = e.y;
 			}
 			
 			// Function to update positions, score and everything.
@@ -576,6 +594,7 @@
 			
 			// On button click (Restart and start)
 			function btnClick(e) {
+				updateDiag( 'James' );
 				
 				// Variables for storing mouse position on click
 				var mx = e.pageX,
@@ -613,6 +632,7 @@
 			
 			// On touch click (Restart and start)
 			function touchClick(e) {
+				updateDiag( 'Joyce' );
 				// Boyer here; adding for Android
 				if( navigator.userAgent.match(/Android/i) ) {
 					e.preventDefault();
@@ -668,9 +688,8 @@
 		<h4>ViMP - Viral Mobile Pong</h3>	
 		-->
 		<canvas id="canvas" width="2000"; height="2000"></canvas>
-		<!--
-		<p id="diag-text" >Here is it</p>
-		-->
+		<p id="diag-text" >Here it is</p>
+
 		<audio preload="true" id="collide">
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.mp3" />
 			<source src="http://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.wav" />
