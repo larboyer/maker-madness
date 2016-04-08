@@ -11,6 +11,17 @@ div#main-intro h1 {
 	color: purple;
 	font-family:belligerent_madnessregular;
 }
+.cycle-slideshow {
+	width:100%;
+}
+.cycle-slideshow img {
+	width: 100%;
+	height: auto;
+}
+/*
+div#slideshow {
+}
+*/
 div#main-home1 h1 {
 	margin-top: 20px;
 	color: purple;
