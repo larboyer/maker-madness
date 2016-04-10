@@ -12,9 +12,10 @@ div#main-intro h1 {
 	font-family:belligerent_madnessregular;
 }
 .cycle-slideshow {
-	width:100%;
+	width:60%;
 }
 .cycle-slideshow img {
+	border: 5px solid black;
 	width: 100%;
 	height: auto;
 }
