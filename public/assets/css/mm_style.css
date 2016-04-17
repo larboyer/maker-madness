@@ -7,10 +7,30 @@ div#main h1 {
 	font-family:belligerent_madnessregular;
 }
 
+div#main-box {
+	border: 1px solid red;
+	width: 60%;
+}
+div#achieve-box {
+	border: 1px solid blue;
+	width: 60%;
+	height: 100px;
+}
+div#date-location-box {
+	border: 1px solid green;
+	width: 60%;
+	height: 100px;
+}
 
-div#main-intro h1#main-header {
-	color: blue;
+div#main-box h1.main-header {
+	font-size: 70px;
+	color: rgb(12,85,148);
 	font-family: 'rockinghambold';
+}
+div#main-box h3#hashtag {
+	font-size: 30px;
+	color: rgb(205,66,134);
+    font-family: 'rockinghamitalic';
 }
 
 /*
