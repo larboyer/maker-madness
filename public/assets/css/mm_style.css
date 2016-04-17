@@ -6,6 +6,20 @@ div#main h1 {
 	color: purple;
 	font-family:belligerent_madnessregular;
 }
+
+
+div#main-intro h1#main-header {
+	color: blue;
+	font-family: 'rockinghambold';
+}
+
+/*
+div#main h1#main-header { 
+	color: purple;
+	font-family: 'rockinghambold';
+}
+*/
+
 div#main-intro h1 {
 	margin-top: 10px;
 	color: purple;
