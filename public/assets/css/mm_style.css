@@ -1,15 +1,20 @@
 div#slideshow {
-	border: 10px solid blue;
+	//border: 8px solid black;
 }
 div#left-space-box {
-	border: 1px solid blue;
 	position: absolute;
 	width: 40%;
 	z-index: -1;
 }
 
+div#left-space-box img {
+}
+div#left-space-box img#sponsored-by {
+	margin: 5px;
+}
+
 div#main-box {
-	border: 5px solid red;
+	width:60%;
 	float: right;
 	z-index: -1;
 }
@@ -19,7 +24,7 @@ div#achieve-box {
 	float: left;
 }
 
-.cycle-slideshow { width: 50% }
+.cycle-slideshow { width: 100% }
 .cycle-slideshow img { width: 100%; height: auto }
 
 div#date-location-box {
@@ -57,6 +62,7 @@ h1#free {
 	margin: 5px 0px;
 	font-size: 4.0 em;
 	font-family: 'rockinghambold';
+	margin: -150px 0px;
 }
 
 p#social {
@@ -143,9 +149,7 @@ a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
 	height: 48px;
 	margin: 25px;
 	font-size: 24px;
-	margin: 0px -75px;
-	position: relative;
-	left: 50%;
+	float: left;
 }
 
 /* old
