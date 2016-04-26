@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/intro', function(req, res, next) {
-	res.render('intro', { 
+	res.render('intro4', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
