@@ -1,60 +1,66 @@
-body {
-	padding: 10px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-div#main h1 {
-	color: purple;
-	font-family:belligerent_madnessregular;
+
+div#left-space-box {
+	border: 1px solid blue;
+	position: absolute;
+	width: 40%;
+	z-index: -1;
 }
 
 div#main-box {
 	border: 1px solid red;
 	width: 60%;
+	float: right;
+	z-index: -1;
+	height: 300px;
 }
+
 div#achieve-box {
 	border: 1px solid blue;
-	width: 60%;
-	height: 100px;
+	width: 42%;
+	float: left;
 }
+
 div#date-location-box {
 	border: 1px solid green;
-	width: 60%;
-	height: 100px;
+	width: 40%;
+	float: right;
 }
 
-div#main-box h1.main-header {
-	font-size: 70px;
-	color: rgb(12,85,148);
-	font-family: 'rockinghambold';
-}
-div#main-box h3#hashtag {
-	font-size: 30px;
-	color: rgb(205,66,134);
-    font-family: 'rockinghamitalic';
-}
-
-/*
-div#main h1#main-header { 
-	color: purple;
-	font-family: 'rockinghambold';
-}
-*/
-
-div#main-intro h1 {
-	margin-top: 10px;
-	color: purple;
-	font-family:belligerent_madnessregular;
-}
-.cycle-slideshow {
-	width:60%;
-}
-.cycle-slideshow img {
+div#learn-more {
+	/*
 	border: 5px solid black;
+	*/
 	width: 100%;
-	height: auto;
+	float: left;
 }
-/*
-div#slideshow {
+
+h1.main-header {
+	border: 1px solid red;
+	margin: 5px 0px;
+	font-size: 5.0em;
+	font-family: 'rockinghambold';
+	line-height: 0.75em;
+}
+
+h3#hashtag {
+	border: 1px solid blue;
+	margin: 5px 0px;
+	padding: 0px;
+	font-size: 35px;
+    font-family: 'rockinghamitalic';
+	line-height: 1.0em;
+}
+
+h1#free {
+	margin: 5px 0px;
+	font-size: 4.0 em;
+	font-family: 'rockinghambold';
+}
+
+p#social {
+	margin: 5px 0px;
+	font-size: 20px;
+    font-family: 'rockinghamitalic';
 }
 */
 div#main-home1 h1 {
@@ -83,12 +89,11 @@ div#main-intro h3 {
 	font-family:'permiansanstypefaceregular';
 	font-size: 25px;
 }
-.time-date {
-	line-height: 1.15;
-}
+/*
 #main-home .time-date {
 	margin:0;
 }
+*/
 
 .test-border0 {
 	border: 1px solid red;
@@ -132,13 +137,25 @@ a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
 */
 
 #more-info-btn {
+	width: 150px;
+	height: 48px;
+	margin: 25px;
+	font-size: 24px;
+	margin: 0px -75px;
+	position: relative;
+	left: 50%;
+}
+
+/* old
+#more-info-btn {
+	width: 150px;
+	height: 48px;
 	margin: 25px;
 	margin-top:-30px;
 	margin-left: 20px;
-	width: 150px;
-	height: 48px;
 	font-size: 24px;
 }
+*/
 
 #help-section .help-btn {
 	width: 180px;
@@ -271,16 +288,19 @@ ul li {
 	color: #E30611;
 }
 .mm-blue {
-	//color: rgb(35,156,182);
-	color: #349CB6	
+	color: rgb(12,85,148);
 }
 .mm-purple {
-	//color: rgb(194,64,254);
-	color: #C240B6
+	color: rgb(205,66,134);
+	//color: #C240B6
 }
 .mm-yellow {
-	//color: rgb(255,151,0);
-	color: #FF9700
+	color: rgb(255,151,0);
+	//color: #FF9700
+}
+.mm-orange {
+	color: rgb(225,103,52);
+	//color: #FF9700
 }
 .mm-green {
 	color: rgb(77,170,41);
