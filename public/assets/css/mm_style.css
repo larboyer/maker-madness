@@ -7,10 +7,37 @@ div#left-space-box {
 	z-index: -1;
 }
 
-div#left-space-box img {
-}
 div#left-space-box img#sponsored-by {
-	margin: 5px;
+	margin: 10px;
+}
+
+#more-info-btn {
+	position: relative;
+	left: 30px;
+	top: -230px;
+	z-index: 2;
+	width: 150px;
+	height: 48px;
+	font-size: 24px;
+}
+
+h1#free {
+	position: relative;
+	left: 10px;
+	top: -210px;
+	margin: 5px 0px;
+	font-size: 4.0 em;
+	font-family: 'rockinghambold';
+}
+
+.time-date {
+	position: relative;
+	left: 10px;
+	top: -210px;
+	margin:0;
+	font-size: 1.5em;
+	line-height: 1.0em;
+	font-family: 'rockinghambold';
 }
 
 div#main-box {
@@ -20,7 +47,6 @@ div#main-box {
 }
 
 div#achieve-box {
-	border: 1px solid blue;
 	float: left;
 }
 
@@ -33,16 +59,8 @@ div#date-location-box {
 	float: right;
 }
 
-div#learn-more {
-	/*
-	border: 5px solid black;
-	*/
-	width: 100%;
-	float: left;
-}
 
 h1.main-header {
-	border: 1px solid red;
 	margin: 5px 0px;
 	font-size: 5.0em;
 	font-family: 'rockinghambold';
@@ -50,7 +68,6 @@ h1.main-header {
 }
 
 h3#hashtag {
-	border: 1px solid blue;
 	margin: 5px 0px;
 	padding: 0px;
 	font-size: 35px;
@@ -58,12 +75,8 @@ h3#hashtag {
 	line-height: 1.0em;
 }
 
-h1#free {
-	margin: 5px 0px;
-	font-size: 4.0 em;
-	font-family: 'rockinghambold';
-	margin: -150px 0px;
-}
+
+
 
 p#social {
 	margin: 5px 0px;
@@ -144,13 +157,6 @@ a#more-info-btn.btn.btn-primary(href="home") Learn More
 a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
 */
 
-#more-info-btn {
-	width: 150px;
-	height: 48px;
-	margin: 25px;
-	font-size: 24px;
-	float: left;
-}
 
 /* old
 #more-info-btn {
