@@ -26,7 +26,7 @@ var masterCodeMap = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('intro3', { 
+	res.render('intro4', { 
 		'title': 'Achieve Maker Madness'
 	});
 });
