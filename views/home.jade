@@ -24,10 +24,10 @@ block content
 						each proj, i in projDataObj.row_data
 							// Ignore header column
 							if( i != 1 )
-								if( projDataObj.row_data[i][2] == 1 ) 
+								if( projDataObj.row_data[i][4] == 1 ) 
 									tr
-										td.left-col= projDataObj.row_data[i][3]
-										td.right-col= projDataObj.row_data[i][4]
+										td.left-col= projDataObj.row_data[i][2]
+										td.right-col= projDataObj.row_data[i][6]
 				br
 				p#social.mm-blue Follow us on 
 					a(href="https://www.instagram.com/makermadness/")
