@@ -1,16 +1,115 @@
-body {
-	padding: 10px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+div#slideshow {
 }
-div#main h1 {
-	color: purple;
-	font-family:belligerent_madnessregular;
+
+div#left-space-box {
+	//position: absolute;
+	//width: 40%;
+	z-index: -1;
 }
-div#main-intro h1 {
-	margin-top: 10px;
-	color: purple;
-	font-family:belligerent_madnessregular;
+
+img#lightbulb" {
+	z-index: -3;
+
+div#left-space-box img#sponsored-by {
+	margin: 10px;
 }
+
+img#sponsored-by-makers {
+	margin: 20px 0px;
+	padding: 0px;
+}
+
+img#sponsored-by-home {
+	margin: 20px 0px;
+	padding: 0px;
+	float: right;
+}
+
+#more-info-btn {
+	position: relative;
+	//left: 30px;
+	top: -230px;
+	z-index: 2;
+	width: 150px;
+	height: 48px;
+	font-size: 24px;
+}
+
+#free {
+	position: relative;
+	//left: 10px;
+	top: -210px;
+	margin: 5px 0px;
+	font-size: 4.0em;
+	font-family: 'rockinghambold';
+}
+
+.time-date {
+	position: relative;
+	//left: 10px;
+	top: -210px;
+	margin:0;
+	font-size: 1.5em;
+	line-height: 1.0em;
+	font-family: 'rockinghambold';
+}
+
+div#main-box {
+	//width:60%;
+	//float: right;
+	z-index: -1;
+}
+
+div#achieve-box {
+	//float: left;
+}
+
+.cycle-slideshow { width: 100% }
+.cycle-slideshow img { width: 100%; height: auto }
+
+div#date-location-box {
+	border: 1px solid green;
+	width: 40%;
+	//float: right;
+}
+
+h1.main-header-intro {
+	margin: 30px 0px 5px 0px;
+	font-size: 5.0em;
+	font-family: 'rockinghambold';
+	line-height: 0.80em;
+}
+
+
+h1.main-header {
+	margin: 0px 0px;
+	font-size: 5.0em;
+	font-family: 'rockinghambold';
+	line-height: 0.80em;
+}
+
+div.footer img {
+	margin: 10px 10px 30px 15px;
+}
+
+
+h3#hashtag {
+	margin: 5px 0px;
+	padding: 0px;
+	font-size: 35px;
+    font-family: 'rockinghamitalic';
+	line-height: 1.0em;
+}
+
+
+
+
+p#social {
+	margin: 5px 0px;
+	font-size: 20px;
+    font-family: 'rockinghamitalic';
+}
+*/
 div#main-home1 h1 {
 	margin-top: 20px;
 	color: purple;
@@ -37,12 +136,11 @@ div#main-intro h3 {
 	font-family:'permiansanstypefaceregular';
 	font-size: 25px;
 }
-.time-date {
-	line-height: 1.15;
-}
+/*
 #main-home .time-date {
 	margin:0;
 }
+*/
 
 .test-border0 {
 	border: 1px solid red;
@@ -76,22 +174,6 @@ input.short-input {
 }
 #maker-info-form .form-group {
 	margin-bottom: 35px;	
-}
-
-/*
-// Good button, first page
-a#more-info-btn.btn.btn-primary(href="home") Learn More
-// Bad button, second page. 
-a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
-*/
-
-#more-info-btn {
-	margin: 25px;
-	margin-top:-30px;
-	margin-left: 20px;
-	width: 150px;
-	height: 48px;
-	font-size: 24px;
 }
 
 #help-section .help-btn {
@@ -210,7 +292,7 @@ h4#mm-steam p{
 #parent-warning {
 	font-size: 14px;
 	float: left;
-	margin-bottom: 20px;
+	margin 20px 20px 20px 20px;;
 }
 
 ul li {
@@ -225,16 +307,19 @@ ul li {
 	color: #E30611;
 }
 .mm-blue {
-	//color: rgb(35,156,182);
-	color: #349CB6	
+	color: rgb(12,85,148);
 }
 .mm-purple {
-	//color: rgb(194,64,254);
-	color: #C240B6
+	color: rgb(205,66,134);
+	//color: #C240B6
 }
 .mm-yellow {
-	//color: rgb(255,151,0);
-	color: #FF9700
+	color: rgb(255,151,0);
+	//color: #FF9700
+}
+.mm-orange {
+	color: rgb(225,103,52);
+	//color: #FF9700
 }
 .mm-green {
 	color: rgb(77,170,41);

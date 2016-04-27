@@ -2,3 +2,5 @@ node_modules
 *.log
 dig_ocean_*
 spreadsheet_data.json
+.DS_Store
+

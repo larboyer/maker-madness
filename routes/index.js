@@ -26,13 +26,13 @@ var masterCodeMap = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('intro', { 
+	res.render('intro5', { 
 		'title': 'Achieve Maker Madness'
 	});
 });
 
 router.get('/intro', function(req, res, next) {
-	res.render('intro', { 
+	res.render('intro5', { 
 		title: 'Achieve Maker Madness' 
 	});
 });
