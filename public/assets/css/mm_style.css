@@ -87,10 +87,11 @@ h1.main-header-intro {
 	line-height: 0.80em;
 }
 
-h1.main-header {
-	margin: 0px 0px;
+div#main-home1 h1.main-header {
+	margin: 10px 0px;
 	font-size: 5.0em;
 	font-family: 'rockinghambold';
+	color: rgb(12,85,148);
 	line-height: 0.80em;
 }
 
@@ -360,7 +361,7 @@ h2 {
 }
 
 #makers-main-container h3 {
-	color: black;
+	//color: black;
 	float: left;
 	margin: 0;
 	padding: 0;
