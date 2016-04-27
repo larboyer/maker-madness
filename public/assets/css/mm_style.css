@@ -1,19 +1,33 @@
 div#slideshow {
-	//border: 8px solid black;
 }
+
 div#left-space-box {
-	position: absolute;
-	width: 40%;
+	//position: absolute;
+	//width: 40%;
 	z-index: -1;
 }
+
+img#lightbulb" {
+	z-index: -3;
 
 div#left-space-box img#sponsored-by {
 	margin: 10px;
 }
 
+img#sponsored-by-makers {
+	margin: 20px 0px;
+	padding: 0px;
+}
+
+img#sponsored-by-home {
+	margin: 20px 0px;
+	padding: 0px;
+	float: right;
+}
+
 #more-info-btn {
 	position: relative;
-	left: 30px;
+	//left: 30px;
 	top: -230px;
 	z-index: 2;
 	width: 150px;
@@ -21,18 +35,18 @@ div#left-space-box img#sponsored-by {
 	font-size: 24px;
 }
 
-h1#free {
+#free {
 	position: relative;
-	left: 10px;
+	//left: 10px;
 	top: -210px;
 	margin: 5px 0px;
-	font-size: 4.0 em;
+	font-size: 4.0em;
 	font-family: 'rockinghambold';
 }
 
 .time-date {
 	position: relative;
-	left: 10px;
+	//left: 10px;
 	top: -210px;
 	margin:0;
 	font-size: 1.5em;
@@ -41,13 +55,13 @@ h1#free {
 }
 
 div#main-box {
-	width:60%;
-	float: right;
+	//width:60%;
+	//float: right;
 	z-index: -1;
 }
 
 div#achieve-box {
-	float: left;
+	//float: left;
 }
 
 .cycle-slideshow { width: 100% }
@@ -56,16 +70,28 @@ div#achieve-box {
 div#date-location-box {
 	border: 1px solid green;
 	width: 40%;
-	float: right;
+	//float: right;
+}
+
+h1.main-header-intro {
+	margin: 30px 0px 5px 0px;
+	font-size: 5.0em;
+	font-family: 'rockinghambold';
+	line-height: 0.80em;
 }
 
 
 h1.main-header {
-	margin: 5px 0px;
+	margin: 0px 0px;
 	font-size: 5.0em;
 	font-family: 'rockinghambold';
-	line-height: 0.75em;
+	line-height: 0.80em;
 }
+
+div.footer img {
+	margin: 10px 10px 30px 15px;
+}
+
 
 h3#hashtag {
 	margin: 5px 0px;
@@ -149,25 +175,6 @@ input.short-input {
 #maker-info-form .form-group {
 	margin-bottom: 35px;	
 }
-
-/*
-// Good button, first page
-a#more-info-btn.btn.btn-primary(href="home") Learn More
-// Bad button, second page. 
-a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
-*/
-
-
-/* old
-#more-info-btn {
-	width: 150px;
-	height: 48px;
-	margin: 25px;
-	margin-top:-30px;
-	margin-left: 20px;
-	font-size: 24px;
-}
-*/
 
 #help-section .help-btn {
 	width: 180px;
@@ -285,7 +292,7 @@ h4#mm-steam p{
 #parent-warning {
 	font-size: 14px;
 	float: left;
-	margin-bottom: 20px;
+	margin 20px 20px 20px 20px;;
 }
 
 ul li {
