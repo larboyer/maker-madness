@@ -6,10 +6,10 @@ block content
 		div#main-home1
 			br
 			h1.mm-blue.main-header Maker Madness!
-		div#main-info
-			p.mm-yellow.time-date Columbia High School
-			p.mm-yellow.time-date Saturday, April 30<sup>th</sup>
-			p.mm-yellow.time-date 10am - 4pm
+		//div#main-info
+			p.mm-yellow.time-date2 Columbia High School
+			p.mm-yellow.time-date2 Saturday, April 30<sup>th</sup>
+			p.mm-yellow.time-date2 10am - 4pm
 			hr
 		div.row#secondary-panel
 			div.col-sm-8
@@ -28,13 +28,20 @@ block content
 									tr
 										td.left-col= projDataObj.row_data[i][3]
 										td.right-col= projDataObj.row_data[i][4]
+				br
+				p#social.mm-blue Follow us on 
+					a(href="https://www.instagram.com/makermadness/")
+						img(src='assets/mm-img/insta_icon.png' width="40" height="40")
+					&nbspand&nbsp
+					a(href="https://www.facebook.com/MakerMadness/")
+						img(src='assets/mm-img/facebook_icon.png' width="40" height="40")
+					br
 
 			div.col-sm-4#help-section
 				h3.mm-blue.right-just Want to get involved?
 				a.help-btn.btn.btn-primary(href="maker_signup") Be a Maker
-				//a.help-btn.btn.btn-primary(href="http://achievefoundation.org/who-we-are-2/") Sponsor a Station
 				a.help-btn.btn.btn-primary(href="http://achievefoundation.org/maker-madness/") Sponsor a Station
-				//a.help-btn.btn.btn-primary(href="http://achievefoundation.org/volunteer/") Volunteer to Help
 				a.help-btn.btn.btn-primary(href="http://www.signupgenius.com/go/60b0b4ea4aa2aa13-maker") Volunteer to Help
-				img(id="sponsored-by-home" src="/assets/achieve-img/achieve_logo_04.png" width="260px")
+				a(href="http://achievefoundation.org/")
+					img(id="sponsored-by-home" src="/assets/achieve-img/achieve_logo_04.png" width="260px")
 

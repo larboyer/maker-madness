@@ -54,6 +54,15 @@ img#sponsored-by-home {
 	font-family: 'rockinghambold';
 }
 
+.time-date2 {
+	//left: 10px;
+	//top: -210px;
+	margin:0;
+	font-size: 1.5em;
+	line-height: 1.0em;
+	font-family: 'rockinghambold';
+}
+
 div#main-box {
 	//width:60%;
 	//float: right;
@@ -68,7 +77,6 @@ div#achieve-box {
 .cycle-slideshow img { width: 100%; height: auto }
 
 div#date-location-box {
-	border: 1px solid green;
 	width: 40%;
 	//float: right;
 }
@@ -209,13 +217,9 @@ input.short-input {
 	margin:0;
 	padding:0;
 	
-//	padding: 10px;
-	//border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 	text-align: right;
 	margin:0;
-//	padding:0;
-//	margin-right: 20px;
 	border: 1px solid green;
 }
 #main-home #secondary-panel {
@@ -254,41 +258,28 @@ input.short-input {
 	clear: both;
 	padding:0;
 	margin:0;
-//	padding: 10px;
-	border: 1px solid rgb(35,156,182);
 	font-size: 20px;
 	width: 180px;
-	//text-align: right;
-	//margin:5px;
-	//margin-right: 20px;
-	//border: 1px solid blue;
 }
 
 #mm-steam {
 	float: left;
 	padding: 10px;
-	//border: 1px solid rgb(227,6,17);
 	color: black;
 }
 h4#mm-steam{
 	float: left;
-	//padding: 10px;
-	//padding-left: 30px;
-	//color:red;
-	//margin-left:30px;
 }
 
 h4#mm-steam p{
 	float: left;
-	//padding: 10px;
-	//padding-left: 30px;
-	//margin-left:30px;
 }
 
 #mm-steam li {
 	list-style-type: none;
 	padding-left: 30px;
 }
+
 #parent-warning {
 	font-size: 14px;
 	float: left;
@@ -303,7 +294,6 @@ ul li {
 	color: #555;
 }
 .mm-red {
-	//color: rgb(227,6,17);
 	color: #E30611;
 }
 .mm-blue {
@@ -311,18 +301,15 @@ ul li {
 }
 .mm-purple {
 	color: rgb(205,66,134);
-	//color: #C240B6
 }
 .mm-yellow {
 	color: rgb(255,151,0);
-	//color: #FF9700
 }
 .mm-orange {
 	color: rgb(225,103,52);
-	//color: #FF9700
 }
 .mm-green {
-	color: rgb(77,170,41);
+	//color: rgb(77,170,41);
 	color: #4DAA29
 }
 
@@ -338,11 +325,6 @@ hr.real-hr {
 .form-group hr {
 	clear: both;
 	float: left;
-//	visibility: hidden;
-//	display: none;
-//	border 0;
-//	margin 0;
-//	border: 1px solid blue;
 }
 
 .form-group label {
@@ -394,6 +376,7 @@ h2 {
 }
 
 #makers-main-container h3 {
+	color: black;
 	float: left;
 	margin: 0;
 	padding: 0;
@@ -424,22 +407,11 @@ h2 {
 	margin-top: 0em;
 	margin-bottom: 1em;
 }
-/*
-#makers-main-container a {
-	float: left;
-	clear: both;
-	font-size: 18px;
-}
-*/
+
 a.inline-anchor {
 	font-family:'permiansanstypefaceregular'
+	color: rgb(12,85,148);
 }
-/*
-#makers-main-container #larrys-email {
-	font-family:'permiansanstypefaceregular';
-	color: red;
-}
-*/
 
 #maker-signup-container {
 	background-color:#white;
@@ -465,7 +437,7 @@ h3 {
 }
 #in-my-div h3 {
 	font-family:'permiansanstypefaceregular';
-	color: red;
+	color: rgb(225,103,52);
 }
 #in-my-div h3.test1 {
 	font-family:'permiansanstypefaceregular';
@@ -477,12 +449,11 @@ h3 {
 }
 
 .navbar-header {
-	//border: 1px solid blue;
 }
 
 .navbar-collapse { 
-	//border: 1px solid red;
 }
+
 .left-col {
 	vertical-align: text-top;
 	padding-right: 10px;
@@ -490,8 +461,8 @@ h3 {
 	font-weight: 800;
 	line-height: 1.23;
 }
+
 .right-col {
-	//border: 1px solid blue;
 	padding-bottom: 8px;
 	line-height: 1.23;
 }
