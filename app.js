@@ -39,8 +39,8 @@ function getDbConn() {
 }
 
 // Preload the db conn.
-console.log("Diag 1000; getting DB Connection...");
-getDbConn();
+// console.log("Diag 1000; getting DB Connection...");
+// getDbConn();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
