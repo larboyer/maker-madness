@@ -231,6 +231,39 @@ router.get('/pong', function(req, res, next) {
 router.get('/pong2', function(req, res, next) {
 	res.sendFile(__dirname + '/pong2.html');
 });
+
+router.get('/takemake01', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake01.html');
+});
+router.get('/takemake02', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake02.html');
+});
+router.get('/takemake03', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake03.html');
+});
+router.get('/takemake04', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake04.html');
+});
+router.get('/takemake05', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake05.html');
+});
+router.get('/takemake06', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake06.html');
+});
+router.get('/takemake07', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake07.html');
+});
+router.get('/takemake08', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake08.html');
+});
+router.get('/takemake09', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake09.html');
+});
+router.get('/takemake10', function(req, res, next) {
+	res.sendFile(__dirname + '/takemake10.html');
+});
+
+
 /*
 router.get('/docs_test', function(req, res, next) {
 	res.render('docs_test', { 
